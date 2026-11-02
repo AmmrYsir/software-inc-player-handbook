@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Inc — Player's Handbook</title>
+<meta name="description" content="A plain-language guide to actually playing Software Inc: what to click, what to prioritise, and the mistakes that quietly kill your studio.">
+<style>
+:root{
+  --paper:#fbf9f4;
+  --paper-2:#fffdf8;
+  --ink:#1d2430;
+  --ink-2:#3d4a5c;
+  --ink-3:#6b7887;
+  --line:#e2dccf;
+  --line-2:#cfc7b5;
+  --brand:#2f5d8c;
+  --brand-2:#3f7fae;
+  --accent:#c2703a;
+  --accent-2:#8a5a2b;
+  --good:#2f7d55;
+  --good-bg:#eaf5ee;
+  --warn:#a8641a;
+  --warn-bg:#fdf3e3;
+  --bad:#a63c3c;
+  --bad-bg:#fbeceb;
+  --info-bg:#eef3f9;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(29,36,48,.05), 0 8px 24px rgba(29,36,48,.06);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Segoe UI",Inter,system-ui,-apple-system,Roboto,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand);text-decoration:none;border-bottom:1px solid #2f5d8c33}
+a:hover{border-bottom-color:var(--brand)}
+code{font-family:var(--mono);font-size:.88em;background:#efe9dc;border-radius:4px;padding:.08em .3em}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,249,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:1120px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.02em}
+.logo .mark{
+  width:30px;height:30px;border-radius:8px;flex:0 0 30px;
+  background:linear-gradient(140deg,var(--brand),#5aa0c9);
+  color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900;
+}
+.topnav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.topnav a{
+  font-size:13.2px;color:var(--ink-2);border:0;padding:5px 9px;border-radius:7px;white-space:nowrap;
+}
+.topnav a:hover{background:#efe9dc;color:var(--ink)}
+@media (max-width:860px){.topnav{display:none}}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:44px;align-items:start}
+@media (max-width:980px){.layout{grid-template-columns:1fr;gap:0}}
+
+/* ---------- side toc ---------- */
+.toc{
+  position:sticky;top:74px;font-size:13.4px;padding:18px 0 40px;
+  max-height:calc(100vh - 86px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#cfc7b5 transparent;
+}
+.toc::-webkit-scrollbar{width:9px}
+.toc::-webkit-scrollbar-track{background:transparent}
+.toc::-webkit-scrollbar-thumb{background:#d8d1c1;border-radius:99px;border:2px solid var(--paper)}
+.toc::-webkit-scrollbar-thumb:hover{background:#bdb4a0}
+@media (max-width:980px){.toc{display:none}}
+.toc .h{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:800;margin:16px 0 5px}
+.toc a{display:block;padding:3px 8px;border:0;border-left:2px solid transparent;border-radius:0 6px 6px 0;color:var(--ink-2);line-height:1.35}
+.toc a:hover{background:#f1ece1;color:var(--ink)}
+.toc a.active{color:var(--brand);border-left-color:var(--brand);background:#eef3f9;font-weight:600}
+.toc a.lvl1{font-weight:700;color:var(--ink);margin-top:12px;font-size:13.6px}
+.toc a.lvl2{padding-left:16px;font-size:12.9px;color:var(--ink-3)}
+.toc a.lvl2:hover{color:var(--ink)}
+.toc a.lvl2.active{color:var(--brand)}
+.searchbox{width:100%;padding:7px 10px;border:1px solid var(--line-2);border-radius:8px;background:#fffdf8;font-family:var(--sans);font-size:13px;color:var(--ink)}
+.searchbox:focus{outline:2px solid #2f5d8c33;border-color:var(--brand-2)}
+.toc .searchbox{position:sticky;top:0;z-index:3;box-shadow:0 8px 12px -10px rgba(29,36,48,.45)}
+.tocnote{margin-top:18px;font-size:11.5px;color:var(--ink-3);line-height:1.5;border-top:1px solid var(--line);padding-top:10px}
+
+/* ---------- hero ---------- */
+.hero{padding:46px 0 10px}
+.kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:800}
+h1{font-family:var(--serif);font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em;margin:8px 0 12px;font-weight:700}
+.sub{font-size:19.5px;color:var(--ink-2);max-width:64ch;font-family:var(--serif)}
+.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.chip{font-size:12.4px;padding:4px 10px;border-radius:99px;border:1px solid var(--line-2);background:var(--paper-2);color:var(--ink-2)}
+.chip b{color:var(--ink)}
+
+/* ---------- text ---------- */
+h2{font-family:var(--serif);font-size:clamp(25px,3vw,33px);line-height:1.2;margin:64px 0 4px;letter-spacing:-.01em;scroll-margin-top:80px;font-weight:700}
+h2 .n{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:800;color:#fff;background:var(--brand);border-radius:7px;padding:3px 8px;margin-right:10px;vertical-align:4px;letter-spacing:.04em}
+h3{font-family:var(--serif);font-size:21px;margin:34px 0 4px;scroll-margin-top:80px;font-weight:700}
+h4{font-size:15.5px;margin:20px 0 3px;color:var(--ink)}
+p{margin:10px 0}
+.lead{font-size:18px;color:var(--ink-2)}
+.dim{color:var(--ink-3)}
+.small{font-size:14px}
+.tiny{font-size:12.5px}
+ul,ol{margin:10px 0;padding-left:22px}
+li{margin:5px 0}
+li::marker{color:var(--accent)}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.card h4{margin-top:0}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+.card .tag{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:800}
+
+/* big tldr */
+.tldr{
+  background:linear-gradient(160deg,#fffdf8,#f6f1e4);
+  border:1px solid var(--line-2);border-radius:18px;padding:22px 24px;margin:26px 0;box-shadow:var(--shadow);
+}
+.tldr h3{margin-top:0}
+.tldr ol{margin:8px 0 0;padding-left:24px;font-size:16px}
+.tldr li{margin:7px 0}
+
+/* callouts */
+.box{border-radius:12px;padding:13px 16px;margin:18px 0;border:1px solid;font-size:15.2px}
+.box .t{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;margin-bottom:3px}
+.tip{background:var(--good-bg);border-color:#c2ded0}.tip .t{color:var(--good)}
+.warn{background:var(--warn-bg);border-color:#ecd6b6}.warn .t{color:var(--warn)}
+.bad{background:var(--bad-bg);border-color:#ecc9c7}.bad .t{color:var(--bad)}
+.note{background:var(--info-bg);border-color:#cdddec}.note .t{color:var(--brand)}
+.rule{background:#f4f0e6;border-color:var(--line-2)}.rule .t{color:var(--accent-2)}
+
+/* steps */
+.steps{list-style:none;padding:0;margin:18px 0;counter-reset:s}
+.steps>li{position:relative;padding:0 0 18px 46px;margin:0;border-left:2px solid #e6dfd0;margin-left:15px}
+.steps>li::before{
+  counter-increment:s;content:counter(s);
+  position:absolute;left:-16px;top:-2px;width:30px;height:30px;border-radius:50%;
+  background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13.5px;font-weight:800;font-family:var(--sans);
+  box-shadow:0 0 0 4px var(--paper);
+}
+.steps>li:last-child{border-left-color:transparent}
+.steps>li b{color:var(--ink)}
+
+/* phase ribbon */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0}
+@media (max-width:820px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.phase{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:relative}
+.phase .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}
+.phase h4{margin:2px 0 4px;font-size:16px}
+.phase p{margin:0;font-size:13.4px;color:var(--ink-2)}
+
+/* tables */
+.tablewrap{border:1px solid var(--line);border-radius:12px;overflow:auto;margin:16px 0;background:var(--paper-2);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14.4px}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid #ece6d9;vertical-align:top}
+thead th{background:#f3eee2;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:800;position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:#fdfbf5}
+td.y{color:var(--good);font-weight:700}
+td.n{color:var(--bad);font-weight:700}
+
+/* checklists */
+.check{list-style:none;padding:0;margin:10px 0}
+.check li{position:relative;padding-left:28px;margin:7px 0}
+.check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--good);font-weight:900}
+.check.no li::before{content:"✕";color:var(--bad)}
+
+/* quote */
+.pull{
+  font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink-2);
+  border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin:24px 0;
+}
+
+/* two-col compare */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper-2);margin:16px 0}
+.vs>div{padding:14px 16px}
+.vs>div:first-child{border-right:1px solid var(--line);background:#f6f9f5}
+.vs>div:last-child{background:#fdf7f4}
+.vs h4{margin-top:0;font-size:15px}
+.vs ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+@media (max-width:700px){.vs{grid-template-columns:1fr}.vs>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+
+details{background:var(--paper-2);border:1px solid var(--line);border-radius:11px;padding:10px 15px;margin:12px 0}
+details summary{cursor:pointer;font-weight:700;color:var(--ink)}
+details[open] summary{margin-bottom:8px}
+
+footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:var(--ink-3);font-size:13.4px}
+
+.totop{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:var(--paper-2);color:var(--ink-2);display:none;place-items:center;cursor:pointer;box-shadow:var(--shadow);z-index:40;font-size:16px}
+@media print{.topbar,.toc,.totop{display:none!important}.layout{display:block}.wrap{max-width:none;padding:0}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="logo"><span class="mark">SI</span> Player's Handbook</div>
+    <nav class="topnav">
+      <a href="#start">Start here</a>
+      <a href="#loop">The loop</a>
+      <a href="#people">People</a>
+      <a href="#money">Money</a>
+      <a href="#sell">Selling</a>
+      <a href="#servers">Servers &amp; hardware</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#secrets">Secrets</a>
+      <a href="#mistakes">Mistakes</a>
+      <a href="#cheatsheet">Cheat sheet</a>    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="layout">
+
+<!-- ============ TOC ============ -->
+<aside class="toc" id="toc">
+  <input class="searchbox" id="tocsearch" placeholder="Jump to…" aria-label="Filter sections">
+  <!-- filled by script -->
+  <div class="tocnote">
+    Written for playing, not for modding. No formulas, no code — just what to do and why.
+  </div>
+</aside>
+
+<main id="main">
+
+<section class="hero">
+  <div class="kicker">A practical guide · Software Inc (Beta 1.8)</div>
+  <h1>So you're running a software company.</h1>
+  <p class="sub">
+    This is the version of the guide you can actually play from. It won't explain the maths
+    behind the game — it will tell you what to do next, what to spend money on, and which
+    habits quietly destroy new studios.
+  </p>
+  <div class="hero-meta">
+    <span class="chip"><b>Read time</b> ~35 minutes</span>
+    <span class="chip"><b>Applies to</b> any difficulty, any start year</span>
+    <span class="chip"><b>Assumes</b> you've launched the game once</span>
+  </div>
+</section>
+
+<section class="tldr">
+  <h3>If you only read one thing</h3>
+  <p class="dim" style="margin-top:0">Six habits do most of the work in this game. Everything else is detail.</p>
+  <ol>
+    <li><b>Design properly.</b> Three full passes through the design document before you start building.
+        Skip it and the product is capped at "mediocre" no matter how long you work on it.</li>
+    <li><b>Finish what you started.</b> A finished simple feature beats a half-finished fancy one.
+        Every time.</li>
+    <li><b>Hire one really good programmer</b> before you enter beta. Bug fixing is limited by your
+        best programmer, not by how many people you throw at it.</li>
+    <li><b>Price near the suggested price.</b> Not below it to "sell more", not above it to "make more".</li>
+    <li><b>Time your releases for autumn/winter.</b> A November release sells roughly a third more
+        than an August one.</li>
+    <li><b>Keep the tail alive.</b> Updates, sequels and add-ons are where the real money is; the
+        launch week is only the beginning.</li>
+  </ol>
+</section>
+
+<!-- ================= START ================= -->
+<h2 id="start"><span class="n">01</span>Start here: your first two hours</h2>
+
+<p class="lead">
+  If you've just made a company and you're staring at an empty office, do this. It's a safe,
+  boring, profitable first project — exactly what you want while you learn the interface.
+</p>
+
+<div class="box note">
+  <span class="t">Before the steps</span>
+  <b>Play the in-game tutorial first</b> if you haven't — it teaches the interface in about twenty
+  minutes, and this guide assumes you know roughly where things are. And if this is your very first
+  company, <b>pick Beginner or Easy</b>: design moves faster, reputation matters less, and mistakes
+  are survivable. Start a harder company later, once the rhythm makes sense.
+</div>
+
+<ol class="steps">
+  <li>
+    <b>Pick a small, familiar software type.</b> A 2D Editor, Audio Tool or Office Software is
+    ideal: short development, one category, easy to understand. Save Games, Operating Systems and
+    anything "hardware" for later — they are long, expensive and unforgiving.
+  </li>
+  <li>
+    <b>Hire a tiny team, not a big one.</b> For a first project you want roughly
+    <b>one designer, two or three programmers and one or two artists</b>, plus a lead designer.
+    More people than the project needs actually slows you down and costs more.
+  </li>
+  <li>
+    <b>Make the design document and actually use it.</b> Pick features you can afford in time.
+    Aim for a design that takes about the same time as the game suggests (the "optimal" dev time
+    shown for the type). You do not need every feature — you need <i>enough</i> features in the
+    right areas.
+  </li>
+  <li>
+    <b>Run the design three times.</b> When the design finishes, don't hit "start development" —
+    run another design pass. Three passes is the difference between a product that can score well
+    and one that cannot. (The design phase is fast; it is the cheapest quality you will ever buy.)
+  </li>
+  <li>
+    <b>Start alpha and watch the bars, not the clock.</b> Progress should crawl up steadily.
+    If one bar is stuck, you're missing that role — usually artists or programmers.
+  </li>
+  <li>
+    <b>Do one review, then one iteration, if you can afford it.</b> A review costs money but shows
+    you where you are; an iteration raises the quality ceiling and cuts bugs a little. Do this
+    <i>before</i> beta.
+  </li>
+  <li>
+    <b>Enter beta and fix bugs until the curve flattens.</b> Don't wait for zero bugs — wait until
+    the remaining bug count stops dropping fast. Then release.
+  </li>
+  <li>
+    <b>Set the price to roughly the suggested value.</b> If you're unsure, price slightly under it.
+    Never price above 1.75× the suggestion — at that point people simply stop buying.
+  </li>
+  <li>
+    <b>Market it before release, not after.</b> A press release and a press build in the months
+    before launch are worth far more than the same money spent after.
+  </li>
+  <li>
+    <b>Release in autumn if you can.</b> If your product is ready in summer, it is usually worth
+    waiting a couple of months. November and December are the strongest months of the year.
+  </li>
+</ol>
+
+<div class="box tip">
+  <span class="t">A good first goal</span>
+  Don't aim for a 5-star hit. Aim for a <b>finished, fairly priced, well-marketed product that
+  makes a profit</b>. Reputation and fans build slowly; the first game is about not going bankrupt
+  and learning the rhythm.
+</div>
+
+<div class="box warn">
+  <span class="t">The classic first-game trap</span>
+  Building a giant game with a tiny team and no design passes. It takes a year, ships unfinished,
+  scores badly, and you can't afford the next one. Small, finished, on time — always.
+</div>
+
+<h3>What the game is actually asking of you</h3>
+
+<p>
+  Software Inc is a juggling act between four things, and they fight each other:
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <span class="tag">Time</span>
+    <h4>How long you develop</h4>
+    <p class="small">Longer means more features and more polish — and more salaries, more bugs, and
+    a product that may be outdated when it ships. There is a sweet spot, and the game shows it to
+    you as the type's "optimal" development time.</p>
+  </div>
+  <div class="card">
+    <span class="tag">Quality</span>
+    <h4>How good it is</h4>
+    <p class="small">Driven mostly by design passes and by actually finishing work, then by how
+    good your people are. Quality is what makes reviews, reputation and long-term sales.</p>
+  </div>
+  <div class="card">
+    <span class="tag">Money</span>
+    <h4>What you can afford</h4>
+    <p class="small">Salaries are monthly and relentless. Contracts and small products keep you
+    alive while you build the thing you actually want to build.</p>
+  </div>
+  <div class="card">
+    <span class="tag">Attention</span>
+    <h4>Whether anyone notices</h4>
+    <p class="small">Marketing, hype, followers and reputation decide whether a good product sells
+    like a good product or disappears without a trace.</p>
+  </div>
+</div>
+
+<!-- ================= LOOP ================= -->
+<h2 id="loop"><span class="n">02</span>The loop: a product from idea to money</h2>
+
+<p class="lead">
+  Every product in the game — from a $20 tool to a console operating system — goes through the
+  same four phases. Once you can recognise which phase you're in, the game stops feeling chaotic.
+</p>
+
+<div class="phases">
+  <div class="phase"><div class="k">Phase 1</div><h4>Design</h4><p>Pick features, set the quality ceiling, choose your lead designer.</p></div>
+  <div class="phase"><div class="k">Phase 2</div><h4>Alpha</h4><p>Build it. Programmers write code, artists make art. Bugs pile up.</p></div>
+  <div class="phase"><div class="k">Phase 3</div><h4>Beta</h4><p>Fix bugs. Decide when "good enough" is good enough.</p></div>
+  <div class="phase"><div class="k">Phase 4</div><h4>Release</h4><p>Price it, market it, ship it, support it, sequel it.</p></div>
+</div>
+
+<h3>Design: where the product is really decided</h3>
+
+<p>
+  This is the part new players rush and later regret. The design document decides two things that
+  you cannot change later: <b>which features the product will have</b>, and <b>how good it is
+  allowed to become</b>.
+</p>
+
+<p>
+  Every feature has a star rating. One-star features are cheap and give a little value; two-star
+  features cost similar time but give <i>twice</i> the value. Three-star features are special
+  effects — they don't add "quality points" at all, but they do things (extra income per user,
+  converting sales, and so on). So when you're choosing:
+</p>
+
+<ul>
+  <li><b>Prefer two-star features</b> when you can afford them. They are the best value per month
+      of work in the game.</li>
+  <li><b>Spread your features across the product's three "areas"</b> (for a game: Gameplay,
+      Graphics, Story). A product that is amazing in one area and empty in another scores worse
+      than a balanced one.</li>
+  <li><b>Don't take everything.</b> Once your feature list is roughly "the size the type expects",
+      extra features buy you very little and cost you months and bugs.</li>
+  <li><b>Take three-star features deliberately</b> — for their effect, not for their score.</li>
+</ul>
+
+<div class="box rule">
+  <span class="t">Rule of thumb</span>
+  <b>Three design passes minimum, four if you can afford the time.</b> The first pass is rough,
+  the second is decent, the third unlocks the product's full potential, and the fourth removes the
+  randomness so you know what you're getting.
+</div>
+
+<details>
+  <summary>Why does re-running the design do anything?</summary>
+  <p class="small">Each pass through the design is a full review of the concept by your lead designer.
+  With one pass, the team ends up with a vague brief and builds something "about 50 % as good as it
+  could have been". Each extra pass raises the ceiling. After three passes the ceiling is as high as
+  it goes; the fourth pass mainly makes the outcome predictable instead of a coin flip.</p>
+</details>
+
+<h3>Alpha: building it</h3>
+
+<p>
+  Alpha is the long middle. Two bars matter: <b>code</b> and <b>art</b>. Your programmers fill the
+  code bar, your artists fill the art bar, and features finish one by one.
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>If progress feels slow</h4>
+    <ul class="small">
+      <li><b>Wrong roles:</b> the most common cause. Check the feature list — if it's mostly art and
+          you have one artist, that's your bottleneck.</li>
+      <li><b>Too many people:</b> beyond the ideal team size, extra staff add less than they cost.
+          The game shows the ideal team size per phase; follow it.</li>
+      <li><b>Bad tools/computers or a miserable office:</b> unhappy staff work slower. Comfort,
+          equipment and a decent room matter more than they look.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>What to do while alpha runs</h4>
+    <ul class="small">
+      <li>Line up your <b>next</b> design so teams aren't idle when this one ends.</li>
+      <li>Take a <b>contract</b> if cash is tight — but don't steal your best people from the main
+          project for too long.</li>
+      <li>Watch the <b>bug counter</b>. A team of juniors generates a frightening number of bugs.</li>
+      <li>Start <b>marketing</b> in the last third of development, not at the start.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Beta: fixing bugs, and the one hire that saves you</h3>
+
+<p>
+  Beta is short and brutal. Your team fixes bugs, and how many you can fix is limited by a single
+  thing: <b>the skill of your best programmer on the team</b>. Not the number of programmers — the
+  best one.
+</p>
+
+<div class="box warn">
+  <span class="t">The single most important hire in the game</span>
+  Before beta, make sure you have <b>at least one genuinely strong programmer</b> assigned to the
+  project. If your best programmer is mediocre, you will ship with a pile of bugs no matter how
+  many people you assign, and bugs hit reviews, refunds and long-term sales.
+</div>
+
+<p>
+  When do you stop fixing and ship? Watch the bug count. Early in beta it drops quickly; later each
+  fix takes longer. When the curve flattens and you still have a large pile, more beta time is
+  usually better spent on marketing or on starting the next product.
+</p>
+
+<h3>Release: the part everyone gets wrong</h3>
+
+<p>
+  Release is not one decision, it's four: <b>when</b>, <b>at what price</b>, <b>with how much
+  marketing</b>, and <b>what you do afterwards</b>. Each has a section below. The short version:
+</p>
+
+<ul>
+  <li><b>When:</b> late in the year is better; if the product is ready in August, consider waiting.</li>
+  <li><b>Price:</b> at or just under the suggested price; never far above it.</li>
+  <li><b>Marketing:</b> concentrated <i>before</i> launch, not spread thinly afterwards.</li>
+  <li><b>Afterwards:</b> patches, updates and add-ons keep the product earning for years.</li>
+</ul>
+
+<h3>Where everything lives</h3>
+
+<p>
+  Software Inc hides a lot behind a few windows. If you can't find something, it's almost always in
+  one of these.
+</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Window</th><th>What it's for</th><th>When you'll open it</th></tr></thead>
+  <tbody>
+    <tr><td><b>Company / main panel</b></td><td>Your money, your work items, your teams, the clock.</td><td>Constantly. This is home base.</td></tr>
+    <tr><td><b>Design document</b></td><td>Choosing features, setting the lead, running extra passes.</td><td>Start of every product.</td></tr>
+    <tr><td><b>Work item / development view</b></td><td>Alpha and beta progress, assigned teams, bugs, the review button.</td><td>During development.</td></tr>
+    <tr><td><b>Teams</b></td><td>Grouping employees and assigning them to projects.</td><td>Whenever you hire, or a project stalls.</td></tr>
+    <tr><td><b>Hiring / employees</b></td><td>Browsing candidates, salaries, firing, training.</td><td>Between projects, mostly.</td></tr>
+    <tr><td><b>Build mode</b></td><td>Rooms, walls, furniture, doors, equipment.</td><td>Early game, and whenever the office feels cramped.</td></tr>
+    <tr><td><b>Product / release window</b></td><td>Your released products, prices, marketing, updates, add-ons, sequels, ports.</td><td>After release — this is your income dashboard.</td></tr>
+    <tr><td><b>Marketing</b></td><td>Press releases, campaigns, post-release spend.</td><td>The last few months before launch and after.</td></tr>
+    <tr><td><b>Contracts</b></td><td>Jobs offered by other companies.</td><td>Early game, or when cash is tight.</td></tr>
+    <tr><td><b>Research</b></td><td>Unlocking and licensing technology.</td><td>Continuously, in the background.</td></tr>
+    <tr><td><b>Deals</b></td><td>Publisher offers, distribution deals, acquisition offers.</td><td>When you're short of money or ready to grow.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box tip">
+  <span class="t">One habit that saves hours</span>
+  Whenever a product is released, immediately open its product window and look at the sales graph,
+  the price and the update button. That one screen tells you whether the launch worked, and what to
+  do next — before you get distracted by the next design.
+</div>
+
+<!-- ================= PEOPLE ================= -->
+<h2 id="people"><span class="n">03</span>People: the only resource that really matters</h2>
+
+<p class="lead">
+  Software is made by people, and in this game people are expensive, opinionated and slow to
+  replace. A good studio is not the one with the most employees — it's the one where the right
+  few people are working on the right things.
+</p>
+
+<h3>The five kinds of employee</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Role</th><th>What they do</th><th>When you need them</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Designer</b></td>
+      <td>Works the design document. Turns your feature list into something buildable.</td>
+      <td>Always. Design is the phase that decides how good the product can be.</td>
+    </tr>
+    <tr>
+      <td><b>Lead</b></td>
+      <td>Leads a design; also the person who makes a design <i>better</i> rather than just longer.</td>
+      <td>Every serious project. A design with no lead runs at half speed and produces less.</td>
+    </tr>
+    <tr>
+      <td><b>Programmer</b></td>
+      <td>Fills the code side of features, and fixes bugs in beta.</td>
+      <td>In alpha and beta. One excellent programmer is worth several average ones in beta.</td>
+    </tr>
+    <tr>
+      <td><b>Artist</b></td>
+      <td>Fills the art side of features.</td>
+      <td>Depends entirely on the product. A 2D Editor needs lots of art; an antivirus needs almost none.</td>
+    </tr>
+    <tr>
+      <td><b>Service</b></td>
+      <td>Accountants, receptionists, janitors, cooks, IT, security, support staff.</td>
+      <td>As your office grows. They don't make products, they stop the studio from falling apart.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Skills and specialisations</h3>
+
+<p>
+  Every employee has a <b>skill level</b> (shown as stars) and one or more <b>specialisations</b> —
+  the areas they're unusually good at, such as 2D art, 3D, audio, or systems.
+</p>
+
+<p>
+  Features are also tagged with an area. A feature in 3D is built noticeably faster by someone with
+  three stars in 3D than by a generalist — speed, not quality. This matters most for small teams:
+  instead of hiring broadly, hire for the areas your chosen product actually needs.
+</p>
+
+<div class="box tip">
+  <span class="t">Hiring checklist</span>
+  <ul style="margin:6px 0 0">
+    <li><b>Skill</b> — the headline number. Higher is better, but it's not everything.</li>
+    <li><b>Specialisation</b> — does it match the product you're about to build?</li>
+    <li><b>Traits</b> — free bonuses or permanent annoyances. A fast learner becomes valuable;
+        a permanently stressed employee is a liability in a small team.</li>
+    <li><b>Salary</b> — a great employee at a painful salary can still be worth it. Three mediocre
+        employees at the same total cost usually aren't.</li>
+  </ul>
+</div>
+
+<h3>Teams, and why bigger isn't better</h3>
+
+<p>
+  You assign employees to teams, and teams to projects. The game gives you an ideal team size for
+  each phase — roughly <b>one person for every four months of work</b>, plus one. Going much past
+  that is one of the most common ways to waste money in Software Inc: each extra person adds less
+  output than the last, while costing a full salary.
+</p>
+
+<div class="box warn">
+  <span class="t">Don't solve a staffing problem by hiring more</span>
+  If a project is slow, the answer is almost always <i>the wrong mix of roles</i>, not "more
+  people". Look at which bar is stuck first: that's the role you're short of.
+</div>
+
+<h3>Keeping people happy</h3>
+
+<p>
+  Employees have needs — food, toilets, comfort, temperature, noise, cleanliness — and a mood that
+  drifts up or down. Unhappy employees work slower, produce worse work and eventually resign.
+  You don't need a palace; you need a workplace that isn't obviously annoying:
+</p>
+
+<ul class="check">
+  <li>Enough desks, chairs and computers for everyone, and computers that aren't ancient.</li>
+  <li>Toilets and a kitchen/cafeteria within reasonable walking distance of the desks.</li>
+  <li>A comfortable temperature — offices get too hot with a crowd and too cold with none.</li>
+  <li>Somewhere to relax, and not too many people crammed into one room.</li>
+  <li>Enough service staff to keep the place clean and fed once you're past ~15 people.</li>
+</ul>
+
+<div class="box note">
+  <span class="t">Cheap morale wins</span>
+  Better chairs and a slightly bigger room are usually cheaper than a raise — and they help everyone
+  at once. Keep an eye on the room's comfort rating rather than adding furniture at random.
+</div>
+
+<h3>Your first office</h3>
+
+<p>
+  You don't need a nice office. You need a <i>functional</i> one, and the game will punish you for
+  skipping the boring parts. A workable first build:
+</p>
+
+<ol class="steps">
+  <li><b>One room for development</b>, big enough for your team plus a bit of space. Cramming desks
+      into a corridor makes everyone miserable.</li>
+  <li><b>A desk, a chair and a computer for every person</b> — and don't buy the cheapest computer
+      if you're going to keep it for years.</li>
+  <li><b>A bathroom and a small kitchen/cafeteria</b> close by. If people have to walk across the
+      building to eat, they spend the day walking.</li>
+  <li><b>Heating and cooling.</b> Rooms with lots of computers get hot; empty rooms get cold. This
+      is one of the most commonly forgotten causes of a miserable studio.</li>
+  <li><b>Reception and a little decoration</b> once you can afford it — morale and first impressions,
+      not a priority on day one.</li>
+</ol>
+
+<div class="box warn">
+  <span class="t">Don't build the palace first</span>
+  A beautiful office with three employees in it is a slower, more expensive version of a small
+  office with three employees in it. Expand when you hire, not before.
+</div>
+
+
+<!-- ================= MONEY ================= -->
+<h2 id="money"><span class="n">04</span>Money: staying alive long enough to get good</h2>
+
+<p class="lead">
+  Most failed studios don't fail because their games are bad. They fail because they ran out of
+  money between products. Treat cash flow as a first-class problem and the rest gets much easier.
+</p>
+
+<h3>Where money comes from</h3>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Product sales</h4>
+    <p class="small">Your main long-term income. A product sells strongly at launch, then tails off;
+    updates and add-ons can revive that tail. Sequels sell to the audience you built.</p>
+  </div>
+  <div class="card">
+    <h4>Contracts</h4>
+    <p class="small">Other companies pay you to do work — support, bug fixing, small development
+    jobs. Reliable, unglamorous income. Perfect early on, dangerous if it eats your best people
+    permanently.</p>
+  </div>
+  <div class="card">
+    <h4>Publishing deals</h4>
+    <p class="small">A publisher funds and markets your product in exchange for a cut. Good when
+    you're small and unknown; expensive once you can market yourself.</p>
+  </div>
+  <div class="card">
+    <h4>Platform cuts</h4>
+    <p class="small">If you own a distribution platform, every third-party sale through it pays you
+    a percentage. A late-game income stream that compounds.</p>
+  </div>
+</div>
+
+<h3>Where money goes</h3>
+
+<ul>
+  <li><b>Salaries</b> — every month, whether you shipped or not. This is the number that kills you.</li>
+  <li><b>Rent and utilities</b> — grows with the office, quietly.</li>
+  <li><b>Marketing</b> — optional, but the difference between a hit and a shrug.</li>
+  <li><b>Production</b> — physical copies, hardware components, printing.</li>
+  <li><b>Licences and royalties</b> — using someone else's tech or IP costs a share of sales.</li>
+  <li><b>Servers</b> — products with online features cost money every month, forever.</li>
+</ul>
+
+<div class="box rule">
+  <span class="t">Rule of thumb</span>
+  Keep <b>at least three months of salaries in the bank</b> before starting a big project. If you
+  can't, take a contract first. Running out mid-project is the worst possible outcome — you lose
+  the money <i>and</i> the time.
+</div>
+
+<h3>The early-game survival plan</h3>
+
+<ol class="steps">
+  <li><b>Start small and cheap.</b> One small product with a small team. Keep the office minimal.</li>
+  <li><b>Take contracts to cover salaries</b> while your first product is in development — but only
+      as many as your spare people can handle.</li>
+  <li><b>Reinvest in people, not furniture.</b> Your first profits should buy one or two strong
+      employees, not a bigger office.</li>
+  <li><b>Build reputation before ambition.</b> Three decent, finished products build a following
+      that makes your first big product actually sell.</li>
+</ol>
+
+<div class="box bad">
+  <span class="t">The death spiral</span>
+  Hire a big team for an ambitious product → run out of cash → take contracts with the same team →
+  the product stalls and gets outdated → ship it late and unfinished → reputation drops → the next
+  product sells worse. If you notice yourself in this loop, cut the team and finish something small.
+</div>
+
+<h3>Contracts: the early-game lifeline</h3>
+
+<p>
+  Contracts are the least glamorous and most underrated part of the early game. Another company pays
+  you a fixed amount to do a defined job. It doesn't build your reputation, and it doesn't build
+  fans — but it pays salaries, which means it buys you time.
+</p>
+
+<ul class="check">
+  <li><b>Take one when you're new.</b> It's the difference between a comfortable first product and
+      a panicked one.</li>
+  <li><b>Match the contract to spare people.</b> If your designers are idle between designs, take a
+      design-heavy contract. Don't pull your best programmer off the main project for months.</li>
+  <li><b>Watch the deadline.</b> Late contracts damage your standing and can cost you the fee. If you
+      can't finish it, don't take it.</li>
+  <li><b>Stop taking them once products pay the bills.</b> Contracts have a ceiling; products don't.</li>
+</ul>
+
+
+<!-- ================= SELLING ================= -->
+<h2 id="sell"><span class="n">05</span>Selling: price, hype and the long tail</h2>
+
+<p class="lead">
+  A finished product is only half the job. The other half is making sure people know it exists,
+  charging the right amount, and then keeping it alive instead of letting it quietly die.
+</p>
+
+<h3>Marketing: spend it before launch</h3>
+
+<p>
+  The game has several marketing tools, and they do different jobs:
+</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tool</th><th>What it's for</th><th>Cost</th><th>Timing</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Press build</b></td>
+      <td>Let journalists try an unfinished build. Builds followers steadily during development.</td>
+      <td>Free</td>
+      <td>Throughout alpha and beta</td>
+    </tr>
+    <tr>
+      <td><b>Press release</b></td>
+      <td>A proper announcement push. The big spike of interest before launch.</td>
+      <td>Money</td>
+      <td>The last few months before release</td>
+    </tr>
+    <tr>
+      <td><b>Post-release marketing</b></td>
+      <td>Keeps awareness up after launch. Helps the tail, doesn't create a second launch.</td>
+      <td>Money, ongoing</td>
+      <td>After release</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box warn">
+  <span class="t">Hype goes stale</span>
+  Marketing done years early is mostly wasted — hype fades on a deadline. Put your money into the
+  <b>last three to six months</b> before release, not the first year of development.
+</div>
+
+<p>
+  Hype turns into <b>followers</b>, and followers turn into <b>guaranteed sales</b>. Think of your
+  follower count as the number of people who will buy on day one almost regardless of reviews —
+  they run out over the following months, which is why a big launch is worth so much.
+</p>
+
+<h3>Pricing: boring, and almost always right</h3>
+
+<p>
+  The game tells you a suggested price for your product. It's derived from how much "value" the
+  product actually contains — a small product gets a low suggested price, a big one gets a high one.
+  That's the number to respect.
+</p>
+
+<ul class="check">
+  <li><b>Price at or slightly below the suggestion.</b> That's where the money is.</li>
+  <li><b>Don't price above it to "earn more".</b> Buyers fall away fast, and past a certain point
+      you sell nothing at all.</li>
+  <li><b>Don't discount early to "build an audience".</b> Cutting the price permanently marks the
+      product as cheap in the game's eyes — you don't get a bonus for it, you just avoid a penalty
+      you could have avoided anyway.</li>
+  <li><b>If the product is small, price it small.</b> An ambitious price on a thin product reads as
+      overpriced, and reviewers will say so.</li>
+</ul>
+
+<div class="box note">
+  <span class="t">Why pricing feels unfair</span>
+  The suggested price is tied to how much of the type's "expected content" you actually built.
+  A product with half the expected features is compared against half the expected price. Charging
+  full price for it counts as massively overpriced — even if it took you just as long to make.
+</div>
+
+<h3>Release timing</h3>
+
+<p>
+  Sales have a seasonal curve. <b>November and December are the strongest months; July and August
+  are the weakest.</b> The difference is large — around a third more demand in December than in
+  August. If a product is finished in early summer, it is often worth holding it back a couple of
+  months, especially if it's a big release.
+</p>
+
+<h3>The long tail: updates, add-ons, sequels</h3>
+
+<div class="grid g3">
+  <div class="card">
+    <h4>Updates</h4>
+    <p class="small">Free patches. They fix bugs, modernise the tech, and <b>reset part of the
+    product's decline</b> — sales pick up again. The cheapest way to keep money coming in from
+    something you already built.</p>
+  </div>
+  <div class="card">
+    <h4>Add-ons &amp; expansions</h4>
+    <p class="small">Sold to the people who already own the base product, and they <b>boost the base
+    product's sales too</b>. Great value: you already have the audience, the engine and the assets.</p>
+  </div>
+  <div class="card">
+    <h4>Sequels</h4>
+    <p class="small">Sell to your existing fans and inherit some of the previous game's reputation.
+    But a sequel that's <i>worse</i> than the original damages the whole series — never rush one.</p>
+  </div>
+</div>
+
+<div class="box rule">
+  <span class="t">The tail rule</span>
+  Every product declines over time, and the decline is slowest in "serious" categories
+  (operating systems, tools) and fastest in fashion-driven ones (sports games, shooters).
+  A product with a long decline is worth more updates; a product with a short one is better
+  replaced by a sequel.
+</div>
+
+<h3>Where you sell</h3>
+
+<p>
+  In the early years almost everything is sold in boxes: you print copies, shops take a cut, and you
+  can run out of stock. As the years pass, digital distribution takes over — first through other
+  people's platforms (which take a percentage), then, if you build one, through your own.
+</p>
+
+<ul>
+  <li><b>Early game:</b> keep physical copies in stock before launch. A sell-out is lost money.</li>
+  <li><b>Mid game:</b> get onto platforms. They take a cut, but they reach far more people.</li>
+  <li><b>Late game:</b> owning a distribution platform means everyone else's sales pay you a
+      percentage. It's one of the strongest long-term investments in the game.</li>
+</ul>
+
+<!-- ================= REVIEWS ================= -->
+<!-- ================= SERVERS & HARDWARE ================= -->
+<h2 id="servers"><span class="n">06</span>Servers and hardware</h2>
+
+<p class="lead">
+  Two systems the tutorial barely explains, and that you can happily ignore for your first few
+  years. The moment a product needs online features — or you decide to build a console — you need
+  to understand them, because both can eat a lot of money quietly.
+</p>
+
+<h3>Servers: when your software needs the internet</h3>
+
+<p>
+  Some features are online by nature. You'll see the game warn you in the design window when you
+  pick them — that's your cue to think about hosting:
+</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Product</th><th>Features that need servers</th></tr></thead>
+  <tbody>
+    <tr><td><b>Games</b></td><td>MMO</td></tr>
+    <tr><td><b>Distribution platforms</b></td><td>Cloud sync, social features, voice chat, remote streaming</td></tr>
+    <tr><td><b>Antivirus</b></td><td>Virus definitions, data mining</td></tr>
+    <tr><td><b>Operating systems</b></td><td>Auto-update, app store, cloud backup, microphone surveillance</td></tr>
+    <tr><td><b>Office software</b></td><td>Cloud backup</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  If you release a product with those features and no hosting arranged, customers get very angry —
+  the game tells you this in plain text at design time. There are two ways to provide it:
+</p>
+
+<div class="vs">
+  <div>
+    <h4>Host it yourself</h4>
+    <ul>
+      <li>Buy server equipment (small servers up to big server racks) and place it in a room.</li>
+      <li>Connect servers together into a group — load is shared across the group.</li>
+      <li>Assign the product to that group.</li>
+      <li>Cheapest long-term; you pay for the hardware, the electricity and the cooling.</li>
+      <li>If a server in the group breaks, the whole group stops working.</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Pay someone else</h4>
+    <ul>
+      <li>Take a hosting deal: another company runs the servers for you.</li>
+      <li>You pay a monthly fee instead of buying hardware.</li>
+      <li>Good when your product is huge and you don't want to build a server room.</li>
+      <li>You lose a bit of control — and the fee never stops while the deal runs.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box warn">
+  <span class="t">Load is not a one-off cost</span>
+  A product's server load is its requirement multiplied by <b>how many people own it</b>. The more
+  successful the product, the more capacity it eats. A hit online game can force you to keep buying
+  servers for years — plan the cost, not just the launch.
+</div>
+
+<p>
+  When a server group can't keep up, it doesn't just "lag". You lose users, your awareness drops,
+  you lose fans, and refunds go up. The game will warn you that servers are having trouble dealing
+  with their load — treat that as an emergency, not a nuisance.
+</p>
+
+<h3>The best early use of a server: SCM</h3>
+
+<p>
+  Before you need servers for a product, put <b>source control management</b> on one. It makes
+  every project in the studio generate fewer bugs and run a little faster. It is the cheapest,
+  most boring, most consistently valuable purchase in the building.
+</p>
+
+<div class="box tip">
+  <span class="t">Other things servers are for</span>
+  <ul style="margin:6px 0 0">
+    <li><b>Your own digital distribution platform</b> needs a server — and owning a store is one of
+        the strongest late-game income streams.</li>
+    <li><b>IT staff</b> repair servers and computers. Without them, broken equipment stays broken.</li>
+    <li><b>Cooling.</b> A room full of servers gets very hot, very fast. Deal with temperature or
+        your employees will suffer for it.</li>
+  </ul>
+</div>
+
+<div class="box note">
+  <span class="t">"You can develop your own server products…"</span>
+  The game's blurbs mention designing your own server products and using them for hosting, or
+  using servers already on the market. In this version (<b>1.8.42</b>) servers are equipment you
+  buy, place and wire together, and hosting is either in-house or outsourced through a deal — the
+  rules above are exactly what applies. If your build has a developable server product, it plugs
+  into the same system: the thing you're really buying is <b>bandwidth for your users</b>.
+</div>
+
+<h3>Hardware: consoles and phones</h3>
+
+<p>
+  Hardware is the other business in Software Inc. Instead of writing software for someone else's
+  machine, you build the machine — and then you own the platform everyone else has to sell on.
+</p>
+
+<ul>
+  <li><b>Where it lives:</b> the <b>Console</b> and <b>Phone</b> categories of the Operating System
+      type. Their suggested prices are far higher than software (consoles around 400, phones around
+      500), and they keep their audience for years.</li>
+  <li><b>Design:</b> in the hardware editor you shape the device and choose its components —
+      plastic, antenna, motherboard, drive bay, controller, case, screen, battery and so on. Each
+      component has a price and a build time, so a fancier device costs more to make <i>and</i>
+      takes longer to produce.</li>
+  <li><b>Manufacturing:</b> an assembly line turns components into finished units. Hardware is
+      <b>100 % physical</b> — there is no digital version. Unsold stock is money you have already
+      spent.</li>
+  <li><b>Features that need components</b> are worth more on hardware than on software, so a good
+      device design genuinely improves the product rather than just decorating it.</li>
+  <li><b>Peripherals:</b> a hardware product can be tied to a peripheral add-on, like a console that
+      ships with a joystick. The peripheral's quality multiplies the main product's quality, so a bad
+      one drags the whole device down.</li>
+</ul>
+
+<div class="box bad">
+  <span class="t">Hardware is not a beginner move</span>
+  Margins are thinner, and every unit you don't sell is a component you already paid for. A known
+  brand also gets more out of hardware than an unknown one, so the reputation you build for years
+  is what makes a device launch work. Do it when you have cash you can afford to lose — and when
+  you want a platform, not just a product.
+</div>
+
+<h3>Should you bother with either?</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>If you're…</th><th>Servers</th><th>Hardware</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Just starting out</b></td>
+      <td>One cheap server for SCM. Nothing else.</td>
+      <td>No. Too capital-hungry.</td>
+    </tr>
+    <tr>
+      <td><b>Shipping online products</b></td>
+      <td>Yes — size the server group for the success you hope for, not the launch week.</td>
+      <td>No.</td>
+    </tr>
+    <tr>
+      <td><b>Established studio</b></td>
+      <td>In-house hosting for your catalogue; a store server if you build a platform.</td>
+      <td>Maybe — a console is a long-term platform play.</td>
+    </tr>
+    <tr>
+      <td><b>Late game</b></td>
+      <td>Server capacity is infrastructure: it gates how big your online products can get.</td>
+      <td>Yes, if you want to own the platform everyone else sells on.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ================= REVIEWS ================= -->
+<h2 id="reviews"><span class="n">07</span>Reviews and reputation: what actually matters</h2>
+
+<p class="lead">
+  Reviews are the most misunderstood part of Software Inc. There are two completely different
+  systems with the same name, and only one of them is a game mechanic.
+</p>
+
+<div class="vs">
+  <div>
+    <h4>Reviews during development</h4>
+    <ul>
+      <li>You <b>pay</b> for them and they take a little time.</li>
+      <li>They tell you how good the product currently is, per area.</li>
+      <li>They unlock an <b>iteration</b>: a second design pass that raises the quality ceiling.</li>
+      <li>They also reduce bugs slightly at the start of beta.</li>
+      <li><b>Genuinely useful.</b> Run one before beta if you can afford it.</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Press reviews after release</h4>
+    <ul>
+      <li>Free, automatic, and they show up in the newspaper.</li>
+      <li>Several outlets score you out of five stars with a quote.</li>
+      <li>They're fun, they're good feedback, and they <b>don't change sales at all</b>.</li>
+      <li>What they reflect — quality, hype, value — is what already decided your sales.</li>
+    </ul>
+  </div>
+</div>
+
+<p>
+  So: chase the <i>things that cause good reviews</i> (finish the product, design properly, fix
+  bugs, price fairly), not the reviews themselves. A one-star press review on a well-made product
+  doesn't cost you a penny in sales; it just stings.
+</p>
+
+<h3>Reputation is the real long game</h3>
+
+<p>
+  Your company has a reputation in each product category, backed by a pool of fans. It builds slowly
+  and matters enormously:
+</p>
+
+<ul>
+  <li><b>Unknown studios sell less.</b> Early on, even a good product undersells because nobody
+      knows who you are. This is normal — don't panic and don't overprice to compensate.</li>
+  <li><b>Good products build fans.</b> Fans make the next launch bigger and make marketing go
+      further.</li>
+  <li><b>Bad products lose fans.</b> Shipping something cheap and broken doesn't just fail to help —
+      it actively sets you back.</li>
+  <li><b>Reputation is per category.</b> Being beloved for games doesn't help you sell antivirus.
+      If you switch categories, expect to start over.</li>
+</ul>
+
+<div class="box tip">
+  <span class="t">The compounding trick</span>
+  Pick a category you like and <b>stay in it</b>. Product, update, expansion, sequel — each one
+  builds the same audience and the same reputation. A studio that jumps between categories every
+  release never gets the compounding effect, and always feels like it's starting over.
+</div>
+
+<h3>What to do about a bad release</h3>
+
+<ol>
+  <li><b>Patch it.</b> Updates fix bugs and refresh sales — and are much cheaper than a new game.</li>
+  <li><b>Don't immediately sequel it.</b> A sequel to a badly received product inherits the damage.</li>
+  <li><b>Rebuild in a small, safe product.</b> A modest, finished, well-priced release in the same
+      category repairs reputation faster than a risky big swing.</li>
+</ol>
+
+<!-- ================= TECH ================= -->
+<h2 id="tech"><span class="n">08</span>Technology: don't ship yesterday's product</h2>
+
+<p class="lead">
+  Every area of software improves over the years. A product built on old technology is still a
+  product — but it will be reviewed as outdated and it will sell worse than the same product built
+  on current technology.
+</p>
+
+<ul>
+  <li><b>Research continuously.</b> It's a small ongoing cost compared with the penalty for falling
+      behind. Treat it like rent, not like a project.</li>
+  <li><b>Licence technology when you must.</b> If you're behind in an area, you can use someone
+      else's tech — for a fee or a royalty on sales. Cheaper than missing the market; more expensive
+      than having researched it yourself.</li>
+  <li><b>Match tech to the product.</b> Building a modern product on an old engine gives you a
+      product that looks old on day one, and reviewers will say exactly that.</li>
+  <li><b>Train your people.</b> Employees improve with experience, and formal training speeds that
+      up. A studio that never trains ends up with expensive people who have stopped growing.</li>
+</ul>
+
+<div class="box note">
+  <span class="t">How to spot it</span>
+  If a product's reviews mention that it feels dated — or if the product screen warns that the
+  tech is behind — that's the signal. It's much cheaper to fix before release than after.
+</div>
+
+<!-- ================= GROW ================= -->
+<h2 id="grow"><span class="n">09</span>Growing: from one product to an empire</h2>
+
+<p class="lead">
+  Once you can reliably ship a profitable product, the game opens up. These are the directions you
+  can grow in — roughly in order of how much they cost and how much they change the game.
+</p>
+
+<h3>1. Run more than one project</h3>
+<p>
+  The obvious next step: two products at once, with two separate teams. The trap is splitting one
+  team across two projects — everyone works slowly on both. Build a second team, don't divide the
+  first one.
+</p>
+
+<h3>2. Build a series</h3>
+<p>
+  Sequels, expansions and updates to the same product line are the most reliable money in the game.
+  You already have the audience, the technology and usually the assets. A well-supported series can
+  fund everything else you want to do.
+</p>
+
+<h3>3. Own the store</h3>
+<p>
+  Building a distribution platform is expensive and slow, and early on it looks like a waste. Then
+  it starts taking a cut of <i>everyone's</i> sales, including your competitors', and it becomes the
+  most valuable thing you own.
+</p>
+
+<h3>4. Make hardware</h3>
+<p>
+  Consoles and phones are a different business: you design the device, buy components, manufacture
+  physical units and sell boxes. Margins are thinner and mistakes are more expensive — a hardware
+  product that sells poorly still cost you the components. Do it when you have cash to burn.
+</p>
+
+<h3>5. Publish other studios</h3>
+<p>
+  If you have money and reputation, you can fund and publish other companies' products for a share
+  of the revenue. Lower risk than making your own product, lower ceiling too.
+</p>
+
+<h3>6. Buy things</h3>
+<p>
+  Stocks, subsidiaries and takeovers are the late-game layer. They're a way to convert a large cash
+  pile into ongoing income and control — and a good way to lose a large cash pile if you're
+  careless.
+</p>
+
+<div class="box rule">
+  <span class="t">Order of operations</span>
+  <b>Profitable single product → a second team → a series → a platform or hardware.</b>
+  Every time you skip a step, you're gambling the studio on a mechanic you haven't practised yet.
+</div>
+
+<!-- ================= SECRETS ================= -->
+<h2 id="secrets"><span class="n">10</span>Secrets and things the game doesn't tell you</h2>
+
+<p class="lead">
+  A grab bag of quirks, hidden effects and small exploits of the rules. None of them are cheating —
+  they're just the parts of the simulation that never make it into a tooltip.
+</p>
+
+<h3>Rules quirks</h3>
+
+<ol>
+  <li><b>The press review doesn't sell games.</b> The five-star newspaper review is cosmetic. Your
+      sales come from quality, hype, price and reputation. Stop chasing stars; chase the things that
+      cause them.</li>
+  <li><b>The fourth design pass removes luck.</b> Three passes reach the maximum quality ceiling but
+      leave a wide random roll. A fourth pass tightens that roll to almost nothing — you get what you
+      planned, every time.</li>
+  <li><b>A review iteration can beat your design ceiling.</b> It's the only way to raise a product's
+      quality ceiling after design. It costs up to half your progress, and each iteration needs its
+      own finished review first — but you can do it more than once before beta, and on a small
+      project the ceiling gain is large.</li>
+  <li><b>Discounts never pay.</b> Price history is a ratchet: once a product has been cheaper, it
+      carries a permanent penalty at any higher price. Cutting the price doesn't create demand — it
+      only avoids a penalty you could have avoided by pricing right the first time.</li>
+  <li><b>Hype has a shelf life of about three months.</b> Marketing earlier than that mostly fades
+      before launch. Spend it late.</li>
+  <li><b>Followers are a floor on sales, not a multiplier.</b> Around a tenth of them convert into
+      guaranteed units every month. Even a badly reviewed product sells to its followers — which is
+      why pre-release hype is worth so much.</li>
+  <li><b>Your own back catalogue competes with you.</b> Quality is judged as a share of everything
+      selling in the category — including your older products still on shelves. Flooding a category
+      with slightly-improved re-releases hurts your own new release.</li>
+  <li><b>Fans leak between categories.</b> A strong category spills part of its audience into
+      sibling categories, and a little across entirely different software types. That's why adjacent
+      products help each other more than unrelated ones.</li>
+  <li><b>Old products stop eating servers.</b> After roughly six months, products with tiny server
+      needs drop off hosting automatically. You don't have to maintain your whole back catalogue
+      forever.</li>
+  <li><b>Server overload costs fans, not just users.</b> Running out of capacity reduces awareness
+      and takes fans away — a double hit on your next launch.</li>
+</ol>
+
+<h3>The three-star features that actually do something</h3>
+
+<p>
+  Three-star features give <i>no</i> quality points at all. You take them for their effect — and
+  some of those effects are far better than others. These are the ones with a described effect:
+</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Feature</th><th>Type</th><th>What it actually does</th></tr></thead>
+  <tbody>
+    <tr><td><b>Bit mining</b></td><td>3D Editor</td><td>Mines crypto on your users' GPUs for roughly <b>$0.10 per active user</b> — at the risk of getting caught.</td></tr>
+    <tr><td><b>Data mining</b></td><td>Antivirus</td><td>Sells user data for about <b>$0.25 per active user</b> — at the risk of getting caught.</td></tr>
+    <tr><td><b>Microphone surveillance</b></td><td>Operating System</td><td>Finds and fixes bugs before they're reported — at the risk of getting caught.</td></tr>
+    <tr><td><b>Included soundcard</b></td><td>Audio Tool</td><td>Physical sales earn <b>+50 % of the sale price</b>, but every copy costs an extra <b>$10</b> to produce.</td></tr>
+    <tr><td><b>Digital exclusive music</b></td><td>Game</td><td>Converts some physical sales into digital — you lose some physical sales, but skip the shops.</td></tr>
+    <tr><td><b>Wacky physics</b></td><td>Game</td><td>Deliberately buggy physics create viral videos and <b>boost your launch marketing</b>.</td></tr>
+    <tr><td><b>Reverse Uno</b></td><td>Game</td><td>Negates lead-designer IP ownership on release — no royalty to the designer.</td></tr>
+    <tr><td><b>Super optimization</b></td><td>Operating System</td><td>Removes the extra cost when ordering physical prints.</td></tr>
+    <tr><td><b>Beautify</b></td><td>2D Editor</td><td>Makes people look better in photos, so customers are <b>less likely to refund</b>.</td></tr>
+    <tr><td><b>Virtual assistant</b></td><td>Office Software</td><td>Bug reports slowly resolve on their own over time.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p class="small dim">
+  A few more three-star features — Store (Website), Employee management (Logistics),
+  Rigging and animation (Game Assets), Hardware interface (Embedded System) — are design modules
+  rather than passive money-makers. They cost development time and give no quality points, so only
+  take them if you specifically want what they unlock.
+</p>
+
+<h3>Money quirks</h3>
+
+<ul>
+  <li><b>Lead designers can own the IP.</b> If your lead owns it, part of every sale goes to them —
+      forever. "Reverse Uno" is the game's way of avoiding that, and it's why a designer who demands
+      IP ownership is a much bigger deal than their salary.</li>
+  <li><b>Physical sales have hidden costs.</b> Shops take roughly 30 % of the retail price, printing
+      costs about $2 per copy (double for hardware), a box holds 1,000 copies, and a sell-out is lost
+      demand — it does <i>not</i> move to digital.</li>
+  <li><b>Hardware is always physical.</b> There's no digital escape hatch for a console: every unit
+      is a component you paid for before you knew whether it would sell.</li>
+  <li><b>Peripherals count.</b> A forced add-on like a joystick multiplies the main device's quality
+      — a cheap peripheral can sink an otherwise good console.</li>
+  <li><b>You can sabotage rivals.</b> Deep into the game there's a very expensive action that
+      DDoSes a competitor's online product: their refunds spike and their reputation suffers. It
+      works both ways, so protect your own online products.</li>
+</ul>
+
+<h3>People quirks</h3>
+
+<ul>
+  <li><b>Traits matter more than they look.</b> A fast learner becomes a senior employee in a
+      fraction of the time; a "born leader" makes everyone around them better; a permanently
+      stressed employee is a liability in a small team. Read the trait list before you hire.</li>
+  <li><b>Specialisations are a speed bonus, not a quality bonus.</b> A three-star specialisation in
+      the area a feature belongs to makes that work meaningfully faster. Quality still comes from
+      raw skill — so a specialist is faster, not automatically better.</li>
+  <li><b>Your best programmer caps beta</b>, and nothing else does. Not team size, not time, not
+      money. One strong programmer is a strategic asset.</li>
+  <li><b>Source control on a server improves every project</b> — fewer bugs, slightly faster work.
+      It's the cheapest permanent buff in the game.</li>
+</ul>
+
+<!-- ================= MISTAKES ================= -->
+<h2 id="mistakes"><span class="n">11</span>Ten mistakes that end studios</h2>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>#</th><th>Mistake</th><th>What actually happens</th><th>Do this instead</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>1</td><td><b>Skipping design passes</b></td>
+      <td>The product is capped at mediocre quality forever. No amount of alpha time can fix it.</td>
+      <td>Three passes, four if affordable, before starting alpha.</td>
+    </tr>
+    <tr>
+      <td>2</td><td><b>Shipping unfinished features</b></td>
+      <td>Final quality collapses — half-finished work is penalised far more than mediocre work.</td>
+      <td>Fewer features, all finished. Cut scope, not completion.</td>
+    </tr>
+    <tr>
+      <td>3</td><td><b>No strong programmer for beta</b></td>
+      <td>You physically cannot fix the bug list; bugs hit reviews, refunds and long-term sales.</td>
+      <td>Hire one excellent programmer before beta, even at a painful salary.</td>
+    </tr>
+    <tr>
+      <td>4</td><td><b>Hiring ahead of revenue</b></td>
+      <td>Salaries keep running while the product is late; you take contracts to survive and the product gets later.</td>
+      <td>Three months of salaries in the bank before any big project.</td>
+    </tr>
+    <tr>
+      <td>5</td><td><b>Overstaffing a project</b></td>
+      <td>Each extra person adds less than they cost, and the office gets worse for everyone.</td>
+      <td>Use the game's suggested team size per phase.</td>
+    </tr>
+    <tr>
+      <td>6</td><td><b>Overpricing</b></td>
+      <td>Sales fall off a cliff; past a certain multiple of the suggested price, nobody buys at all.</td>
+      <td>Price at or just below the suggestion.</td>
+    </tr>
+    <tr>
+      <td>7</td><td><b>Marketing too early</b></td>
+      <td>The hype has faded by launch; you paid for attention nobody remembers.</td>
+      <td>Concentrate marketing in the last few months.</td>
+    </tr>
+    <tr>
+      <td>8</td><td><b>Releasing in summer</b></td>
+      <td>You launch into the weakest months of the year for no reason.</td>
+      <td>Hold for autumn/winter if the product is ready early.</td>
+    </tr>
+    <tr>
+      <td>9</td><td><b>Abandoning products</b></td>
+      <td>The sales tail dies, and the audience you built forgets you.</td>
+      <td>Patch, update, expand. The tail is where the profit is.</td>
+    </tr>
+    <tr>
+      <td>10</td><td><b>Category hopping</b></td>
+      <td>Every new category resets your reputation; every launch feels like your first.</td>
+      <td>Pick a category and build a series before expanding.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ================= CHEAT SHEET ================= -->
+<h2 id="cheatsheet"><span class="n">12</span>Cheat sheet</h2>
+
+<h3>The four phases at a glance</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Phase</th><th>Your job</th><th>Do</th><th>Avoid</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Design</b></td>
+      <td>Choose what the product is</td>
+      <td>Pick ★★ features, balance the three areas, run 3–4 passes, give it a lead designer</td>
+      <td>Rushing to alpha; taking every feature; skipping the lead</td>
+    </tr>
+    <tr>
+      <td><b>Alpha</b></td>
+      <td>Build it</td>
+      <td>Match roles to the feature list, keep the team at the suggested size, keep people happy</td>
+      <td>Hiring more people to fix a role mismatch; letting the office get miserable</td>
+    </tr>
+    <tr>
+      <td><b>Beta</b></td>
+      <td>Clean it up</td>
+      <td>Have your best programmer on it; ship when the fix curve flattens</td>
+      <td>Waiting for zero bugs; assigning lots of weak programmers</td>
+    </tr>
+    <tr>
+      <td><b>Release</b></td>
+      <td>Turn it into money</td>
+      <td>Price at the suggestion, market hard in the last months, launch in autumn if possible</td>
+      <td>Discounting early; launching in August; going quiet after launch</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Your first year, roughly</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>When</th><th>What to be doing</th></tr></thead>
+  <tbody>
+    <tr><td><b>Months 1–3</b></td><td>Small office, small team, one small product. Take a contract if cash is tight.</td></tr>
+    <tr><td><b>Months 3–8</b></td><td>Design properly, build, review once, iterate once if affordable.</td></tr>
+    <tr><td><b>Months 8–10</b></td><td>Beta, fix bugs, start marketing, line up the release window.</td></tr>
+    <tr><td><b>Months 10–12</b></td><td>Release, patch, and start designing the follow-up while the money comes in.</td></tr>
+    <tr><td><b>Year 2</b></td><td>Reinvest in one or two strong hires. Plan a sequel or a second product with a separate team.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Small glossary</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Term</th><th>Plain meaning</th></tr></thead>
+  <tbody>
+    <tr><td><b>Design document</b></td><td>Where you choose the product's features. Repeated passes raise the quality ceiling.</td></tr>
+    <tr><td><b>Alpha</b></td><td>The long build phase. Code and art bars fill; bugs accumulate.</td></tr>
+    <tr><td><b>Beta</b></td><td>Bug-fixing phase before release.</td></tr>
+    <tr><td><b>Iteration</b></td><td>A second design pass after a review. Raises the quality ceiling; costs progress.</td></tr>
+    <tr><td><b>Lead designer</b></td><td>The person who makes a design better rather than just longer. Without one, design is slow and weak.</td></tr>
+    <tr><td><b>Optimal dev time</b></td><td>The length the game thinks suits this type of product. Going far past it rarely pays.</td></tr>
+    <tr><td><b>Hype / followers</b></td><td>Pre-release interest. Followers become guaranteed sales at launch.</td></tr>
+    <tr><td><b>Fans</b></td><td>Your permanent audience in a category. They make every future launch bigger.</td></tr>
+    <tr><td><b>Reputation</b></td><td>How well known and trusted you are in a category. Gates your sales when you're new.</td></tr>
+    <tr><td><b>Tech level</b></td><td>How modern the underlying technology is. Old tech means "outdated" reviews.</td></tr>
+    <tr><td><b>Add-on</b></td><td>Extra content sold on top of a released product; also boosts the base product's sales.</td></tr>
+    <tr><td><b>Contract</b></td><td>Paid work for another company. Reliable income, but it occupies your staff.</td></tr>
+    <tr><td><b>Publisher</b></td><td>Funds and markets your product for a share of the revenue.</td></tr>
+    <tr><td><b>Distribution platform</b></td><td>A store. Others take a cut of your sales; owning one pays you a cut of theirs.</td></tr>
+    <tr><td><b>Server</b></td><td>The hardware that runs your online features. Buy it, place it, wire it into a group, assign products to it.</td></tr>
+    <tr><td><b>Bandwidth / load</b></td><td>How much server capacity your products consume. Load = requirement × number of users.</td></tr>
+    <tr><td><b>Hosting</b></td><td>Who runs the servers for a product: you (in-house) or another company (a hosting deal).</td></tr>
+    <tr><td><b>SCM</b></td><td>Source control management. Put it on a server for fewer bugs and faster development across the studio.</td></tr>
+    <tr><td><b>Hardware</b></td><td>Physical devices (consoles, phones). You design the device, manufacture units and sell boxes.</td></tr>
+    <tr><td><b>Manufacturing</b></td><td>Turning components into sellable hardware units. Unsold units are money already spent.</td></tr>
+    <tr><td><b>Peripheral</b></td><td>A forced add-on sold with a hardware product (e.g. a joystick). Its quality affects the device's quality.</td></tr>
+    <tr><td><b>Port</b></td><td>Bringing a product to another operating system to reach more buyers.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box tip">
+  <span class="t">If you're stuck</span>
+  Ask which phase you're in, then check the one thing that phase depends on:
+  <b>Design</b> → did you run enough passes? <b>Alpha</b> → is the missing role the bottleneck?
+  <b>Beta</b> → is your best programmer good enough? <b>Release</b> → is the price near the
+  suggestion, and did you market in the last few months? Nine times out of ten, the answer is there.
+  <br><br>
+  And if a product is <i>selling</i> but the numbers keep getting worse, check its servers: running
+  out of bandwidth costs you users, fans and reputation at the same time.
+</div>
+
+<footer>
+  <p><b>Software Inc — Player's Handbook.</b> A companion to the technical reference
+  <i>The Score Book</i>, both written from the same read of the game (Beta 1.8.42).</p>
+  <p class="tiny">This guide deliberately avoids formulas and numbers where they'd only get in the
+  way. If you want to see exactly how a mechanic is calculated, the technical book has the full
+  derivation, the source references and the data tables. Nothing here changes your game files.</p>
+</footer>
+
+</main>
+</div>
+</div>
+
+<div class="totop" id="totop" title="Back to top">↑</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Build the side table of contents from every h2/h3 in the article
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  var toc = document.getElementById("toc");
+  var heads = Array.prototype.slice.call(document.querySelectorAll("main h2, main h3"));
+  var html = "";
+  heads.forEach(function (h) {
+    if (!h.id) {
+      var base = slug(h.textContent) || "section";
+      var id = base, i = 2;
+      while (document.getElementById(id)) { id = base + "-" + i++; }
+      h.id = id;
+    }
+    var n = h.querySelector(".n");
+    var label = h.textContent.replace(n ? n.textContent : "", "").trim();
+    var cls = h.tagName === "H2" ? "lvl1" : "lvl2";
+    html += '<a class="' + cls + '" href="#' + h.id + '" data-t="' + h.id + '">' + label + "</a>";
+  });
+  var note = toc.querySelector(".tocnote");
+  toc.innerHTML = '<input class="searchbox" id="tocsearch" placeholder="Jump to…" aria-label="Filter sections">' + html;
+  if (note) toc.appendChild(note);
+
+  // Scroll spy
+  var links = Array.prototype.slice.call(toc.querySelectorAll("a"));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute("data-t")] = a; });
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var a = map[en.target.id];
+        if (!a) return;
+        links.forEach(function (l) { l.classList.remove("active"); });
+        a.classList.add("active");
+      });
+    }, { rootMargin: "-5% 0px -82% 0px", threshold: 0 });
+    heads.forEach(function (h) { obs.observe(h); });
+  }
+
+  // Filter box
+  var search = document.getElementById("tocsearch");
+  if (search) {
+    search.addEventListener("input", function () {
+      var q = this.value.toLowerCase();
+      links.forEach(function (a) {
+        a.style.display = !q || a.textContent.toLowerCase().indexOf(q) >= 0 ? "" : "none";
+      });
+    });
+  }
+
+  // Back to top
+  var top = document.getElementById("totop");
+  window.addEventListener("scroll", function () {
+    top.style.display = window.scrollY > 700 ? "grid" : "none";
+  }, { passive: true });
+  top.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();
+</script>
+</body>
+</html>
+
+
+
