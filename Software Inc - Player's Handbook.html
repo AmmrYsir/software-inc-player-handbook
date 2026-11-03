@@ -144,6 +144,8 @@ hr{border:0;border-top:1px solid var(--line);margin:36px 0}
 .bad{background:var(--bad-bg);border-color:#ecc9c7}.bad .t{color:var(--bad)}
 .note{background:var(--info-bg);border-color:#cdddec}.note .t{color:var(--brand)}
 .rule{background:#f4f0e6;border-color:var(--line-2)}.rule .t{color:var(--accent-2)}
+.formula-note{background:#f4f0e6;border:1px dashed var(--line-2);border-radius:10px;padding:12px 16px;margin:16px 0;font-size:15.2px;line-height:1.6}
+.formula-note b{color:var(--ink)}
 
 /* steps */
 .steps{list-style:none;padding:0;margin:18px 0;counter-reset:s}
@@ -220,6 +222,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
       <a href="#servers">Servers &amp; hardware</a>
       <a href="#reviews">Reviews</a>
       <a href="#secrets">Secrets</a>
+      <a href="#win">Playbooks</a>
       <a href="#mistakes">Mistakes</a>
       <a href="#cheatsheet">Cheat sheet</a>    </nav>
   </div>
@@ -248,7 +251,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
     habits quietly destroy new studios.
   </p>
   <div class="hero-meta">
-    <span class="chip"><b>Read time</b> ~35 minutes</span>
+    <span class="chip"><b>Read time</b> ~60 minutes</span>
     <span class="chip"><b>Applies to</b> any difficulty, any start year</span>
     <span class="chip"><b>Assumes</b> you've launched the game once</span>
   </div>
@@ -439,6 +442,44 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   could have been". Each extra pass raises the ceiling. After three passes the ceiling is as high as
   it goes; the fourth pass mainly makes the outcome predictable instead of a coin flip.</p>
 </details>
+
+<h3>Frameworks: build once, reuse forever</h3>
+
+<p>
+  A framework is a reusable technical base — an engine plus a set of features and tech levels that
+  later products can borrow. You choose to create one in the design window, and it changes the maths
+  of every product that follows.
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th></th><th class="num">Effect on development</th><th>Why it matters</th></tr></thead>
+  <tbody>
+    <tr><td><b>Create a new framework</b></td><td class="num">+25 % time</td>
+      <td>You pay once, on the product that builds it.</td></tr>
+    <tr><td><b>Build on your framework</b></td><td class="num">−25 % time (max)</td>
+      <td>Every feature in the shared set is cheaper to implement.</td></tr>
+    <tr><td><b>Others use your framework</b></td><td class="num">up to 15 % royalty</td>
+      <td>Passive income from other studios' products.</td></tr>
+    <tr><td><b>You use someone else's</b></td><td class="num">royalty you pay</td>
+      <td>Fast, but a permanent cut of sales.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li><b>Best for series.</b> If you plan three games in the same category, build the framework on
+      the first and every sequel gets faster.</li>
+  <li><b>Frameworks can be updated</b> to stay current — a stale framework gives less of a boost.</li>
+  <li><b>A framework is an asset</b>: other companies licensing it is a real income stream, and it
+      raises your standing as a technology company.</li>
+</ul>
+
+<div class="box rule">
+  <span class="t">When to build one</span>
+  Build a framework when you're committing to a category for several products. Don't build one for a
+  single release — you'd pay the 25 % and never use the discount.
+</div>
 
 <h3>Alpha: building it</h3>
 
@@ -671,6 +712,81 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   office with three employees in it. Expand when you hire, not before.
 </div>
 
+<h3>Training: the cheapest permanent buff</h3>
+
+<p>
+  You can send employees on a one-month course from the education window. The course buys a <b>star
+  in a role + specialisation pair</b>, at a cost that rises with the tier:
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th>Course tier</th><th class="num">Cost</th><th class="num">Time</th><th>What you get</th></tr></thead>
+  <tbody>
+    <tr><td>First star</td><td class="num">$600</td><td class="num">1 month</td><td>A junior becomes useful in a specialisation.</td></tr>
+    <tr><td>Second star</td><td class="num">$2,000</td><td class="num">1 month</td><td>A generalist becomes a specialist.</td></tr>
+    <tr><td>Third star</td><td class="num">$5,000</td><td class="num">1 month</td><td>Unlocks the 15 % specialisation speed bonus and better bug fixing.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li><b>It's usually cheaper than hiring</b> a new person at that skill — and the employee is
+      already trained on your tools and your codebase.</li>
+  <li><b>They're unavailable while studying</b>, so train between projects, not mid-alpha.</li>
+  <li><b>Skill also grows with experience</b>; training is how you steer that growth toward the
+      specialisations your products actually use.</li>
+  <li><b>Train your best programmer's bug-fixing skill</b> before a big beta — it raises the ceiling
+      on how many bugs you can fix.</li>
+</ul>
+
+<h3>HR: hiring on autopilot</h3>
+
+<p>
+  Once you have more than one team, hiring becomes a full-time job. <b>HR staff</b> can take it over:
+  you set a wage bracket, the roles and specialisations you want, whether to control role splits
+  automatically, and they hire and fill the gaps for you.
+</p>
+
+<ul>
+  <li><b>Good for growth phases</b> — you stop losing weeks to the hiring window.</li>
+  <li><b>Bad for tight budgets</b> — an HR department that hires "what the teams need" can quietly
+      overspend. Set the wage bracket conservatively.</li>
+  <li><b>HR doesn't replace judgement</b> on key hires. Keep hiring your leads and star programmers
+      yourself.</li>
+</ul>
+
+<h3>Lead designers and their demands</h3>
+
+<p>
+  A lead designer is the difference between a design that's merely long and one that's actually
+  good — and the good ones know it. Leads negotiate, and their demands are real:
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th>Demand</th><th>What it costs</th><th>Why it matters</th></tr></thead>
+  <tbody>
+    <tr><td><b>Fixed rate</b></td><td>A guaranteed salary</td><td>They won't renegotiate; predictable cost.</td></tr>
+    <tr><td><b>Non-binding</b></td><td>Nothing upfront</td><td>They stay flexible — and can leave more easily.</td></tr>
+    <tr><td><b>Exclusive lead</b></td><td>Their time, exclusively</td><td>They lead only one project; no sharing across teams.</td></tr>
+    <tr><td><b>Luxury meal</b></td><td>~$3,000</td><td>A perk; cheap way to keep them happy.</td></tr>
+    <tr><td><b>Luxury car</b></td><td>~$300,000</td><td>Expensive, but sometimes cheaper than losing them.</td></tr>
+    <tr><td><b>Private office</b></td><td>Floor space</td><td>They get their own room; costs you layout.</td></tr>
+    <tr><td><b>Golden handshake</b></td><td>5 years of guaranteed pay</td><td>Huge commitment — only for a lead you're sure about.</td></tr>
+    <tr><td><b>Royalties</b></td><td>5 % of product revenue</td><td>They take a cut of every sale, forever.</td></tr>
+    <tr><td><b>IP ownership</b></td><td>The IP itself</td><td>The designer owns the product; you pay them and lose control of it.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box warn">
+  <span class="t">IP ownership is the one to watch</span>
+  A lead who owns the IP takes a share of every sale for as long as the product lives, and the IP
+  travels with them. If you see "IP ownership" in a demand, either refuse, or plan to use the
+  <b>Reverse Uno</b> feature, which negates lead-designer IP on release.
+</div>
+
 
 <!-- ================= MONEY ================= -->
 <h2 id="money"><span class="n">04</span>Money: staying alive long enough to get good</h2>
@@ -723,6 +839,100 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   can't, take a contract first. Running out mid-project is the worst possible outcome — you lose
   the money <i>and</i> the time.
 </div>
+
+<h3>Loans: other people's money</h3>
+
+<p>
+  When the bank balance is heading for zero, the loan window is the difference between a bad year
+  and a dead company. You can borrow in steps of $10,000, choose a repayment period, and see the
+  monthly cost before you sign.
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th>Loan</th><th class="num">Interest</th><th class="num">Monthly</th><th class="num">Total repaid</th></tr></thead>
+  <tbody>
+    <tr><td>$1,000,000 over 12 months</td><td class="num">~33 %</td><td class="num">~$111,000</td><td class="num">~$1.33 M</td></tr>
+    <tr><td>$1,000,000 over 24 months</td><td class="num">~42 %</td><td class="num">~$59,000</td><td class="num">~$1.42 M</td></tr>
+    <tr><td>$100,000 over 12 months</td><td class="num">~36 %</td><td class="num">~$11,300</td><td class="num">~$136,000</td></tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li><b>Interest is roughly 25 % plus a term</b> that grows with the repayment period and shrinks
+      the larger the loan is. Short and big is cheapest; long and small is most expensive.</li>
+  <li><b>You repay monthly, automatically</b> — the payment keeps running while you develop, so
+      borrow against a product you can finish, not a hope.</li>
+  <li><b>Repaying early is an accounting task</b>, not a button. If you want the debt gone, staff
+      your accountants.</li>
+  <li><b>Don't use loans to hire.</b> Salaries are permanent; a loan is temporary. Borrow to bridge
+      a development gap, not to raise your baseline costs.</li>
+</ul>
+
+<div class="box warn">
+  <span class="t">What actually happens when you run out of money</span>
+  It isn't an instant game over. The game tries to cover the shortfall for you, in this order:
+  <b>bonds/insurance savings → investments → furniture inventory and awards → shares →
+  subsidiary cash → a new loan</b>. If all of that still doesn't cover the debt, the company fails.
+  That's why investments and a stocked warehouse are a hidden safety net — and why awards are worth
+  something after all.
+</div>
+
+<h3>Taxes: the bill you can shrink</h3>
+
+<p>
+  Every so often the tax office wants its share of your profit. The rate depends on difficulty:
+  <b>0 % on Beginner, 10 % Easy, 15 % Medium, 20 % Hard, 25 % Very Hard and Impossible.</b>
+</p>
+
+<p>
+  Taxes are calculated from your income, operations, depreciation, investments and interest — and
+  your accountants can legally grind the bill down by up to <b>5 %</b> by working the tax report.
+  That's a small percentage with a big absolute value once you're making millions.
+</p>
+
+<div class="box bad">
+  <span class="t">The other way to shrink it</span>
+  There's an illegal route — "money funneling" — that moves money offshore and marks your tax
+  report as dirty. It builds <b>heat</b>, and heat brings audits, confiscation and fines. See
+  "The underworld" in the secrets chapter before you try it.
+</div>
+
+<h3>Insurance and safety</h3>
+
+<p>
+  Two things in this game can destroy value overnight: a fire and a burglar. Insurance is how you
+  make them survivable.
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Contents insurance</h4>
+    <ul class="small">
+      <li>Covers furniture that is stolen or destroyed in a fire.</li>
+      <li>The premium scales with what you own (roughly <b>2–8 %</b> of inventory value per month).</li>
+      <li><b>You must pass a fire inspection first</b> — no inspection, no insurance.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Health &amp; life insurance</h4>
+    <ul class="small">
+      <li><b>Health</b> pays out if an employee becomes too sick to keep working.</li>
+      <li><b>Life</b> pays out if an employee dies — most relevant for older staff.</li>
+      <li>Optional, but cheap cover against a sudden loss of a key employee.</li>
+    </ul>
+  </div>
+</div>
+
+<ul>
+  <li><b>Fire inspections are periodic and pass/fail.</b> Fail and you pay a fee — and you can't
+      insure your contents until you pass one.</li>
+  <li><b>Burglars steal items</b>, not cash directly. Security staff stationed at entrances scare
+      them off; sometimes the police catch them and recover some of the loot.</li>
+  <li><b>Keep fire safety in order:</b> extinguishers/hoses and clear escape routes matter when the
+      inspector visits.</li>
+</ul>
 
 <h3>The early-game survival plan</h3>
 
@@ -840,6 +1050,83 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   full price for it counts as massively overpriced — even if it took you just as long to make.
 </div>
 
+<h3>Subscriptions: recurring money, honestly explained</h3>
+
+<p>
+  When you design a product there's a <b>subscription</b> toggle. It replaces the one-off price with
+  a monthly fee, and it changes the whole shape of the product's income.
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>One-off price</h4>
+    <ul class="small">
+      <li>You get paid once per customer, at launch.</li>
+      <li>Income is a spike followed by a long, fading tail.</li>
+      <li>Every copy sold is money in the bank immediately.</li>
+      <li>Works for anything, including physical boxes.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Subscription</h4>
+    <ul class="small">
+      <li>You get paid <b>every month</b> by everyone still subscribed.</li>
+      <li>Income is small at first and grows into a stock of paying users.</li>
+      <li>Revenue continues as long as people stay — and stops when they leave.</li>
+      <li>Needs a product people keep using.</li>
+    </ul>
+  </div>
+</div>
+
+<p>
+  The game sets the suggested subscription price at roughly <b>8 % of the one-off price</b>. An $80
+  game becomes about $6.40 a month, so a customer has to stay for <b>about a year and a month</b>
+  just to pay what they would have paid once.
+</p>
+
+<div class="box rule">
+  <span class="t">The rule of thumb</span>
+  <b>Subscriptions are a bet on retention.</b> A category's retention is how fast customers leave:
+  operating systems keep people for years, sports games lose most of their audience within a year.
+  In a long-retention category a subscriber is worth several one-off sales; in a short-retention one
+  they're worth a fraction of one.
+</div>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Category</th><th>Retention</th><th>Does subscription make sense?</th></tr></thead>
+  <tbody>
+    <tr><td>Operating systems (computer / console / phone)</td><td>36–72 months</td><td class="y">Yes — the only category where it clearly wins. Customers stay for years.</td></tr>
+    <tr><td>Editors, audio tools, RPG/RTS games</td><td>24 months</td><td>Marginal. You'll earn less than a one-off price, but you get steady income.</td></tr>
+    <tr><td>Adventure / simulation games</td><td>18 months</td><td class="n">No — too much churn for an 8 % monthly price.</td></tr>
+    <tr><td>Antivirus</td><td>16 months</td><td class="n">No. It churns faster than you'd expect.</td></tr>
+    <tr><td>Office software, sports, FPS</td><td>12 months</td><td class="n">No. These are built for a new full-price release every year.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><b>Things the toggle doesn't tell you:</b></p>
+
+<ul>
+  <li><b>You can't put hardware on a subscription.</b> The toggle is hidden for consoles and phones.</li>
+  <li><b>Physical copies of a subscription are a trap.</b> Retail takes a far bigger cut on them, to
+      the point where boxed subscriptions usually lose money — treat subscriptions as digital-only.</li>
+  <li><b>Converting an existing series is penalised.</b> A sequel that switches an old one-off
+      franchise to subscriptions loses part of its sequel bonus, and reviewers comment on the switch.
+      Starting a new IP as a subscription is cleaner.</li>
+  <li><b>Paid add-ons sell worse to subscribers.</b> The game halves their appeal to a subscription
+      audience, so plan add-ons as a perk rather than a second income stream.</li>
+  <li><b>Subscribers count as your user base</b> — which matters enormously for an operating system,
+      where the size of your user base decides how much third-party software can sell.</li>
+</ul>
+
+<div class="box tip">
+  <span class="t">If you try it</span>
+  Price at the suggestion, launch with a genuinely finished product (a subscriber who leaves in month
+  one is worth almost nothing), and commit to a steady stream of updates. A subscription product
+  without updates is just a worse one-off product.
+</div>
+
 <h3>Release timing</h3>
 
 <p>
@@ -877,6 +1164,75 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   A product with a long decline is worth more updates; a product with a short one is better
   replaced by a sequel.
 </div>
+
+<h3>Ports: sell to a second platform</h3>
+
+<p>
+  If a product only supports one operating system, you're only selling to that system's users.
+  <b>Porting</b> brings a released product to another OS: it's a short project (a couple of months),
+  and afterwards the product counts as supported on that platform — reaching its entire user base.
+</p>
+
+<ul>
+  <li><b>Port late, not early.</b> The port sells to people who couldn't buy before; the bigger the
+      other platform's user base, the more it's worth.</li>
+  <li><b>Port your long-tail products first.</b> A game with 24-month retention earns from a port
+      for years; a sports game with 12 months earns briefly.</li>
+  <li><b>Ports are cheap compared with a new product</b> — same code, new audience.</li>
+</ul>
+
+<div class="box note">
+  <span class="t">When to skip it</span>
+  If your product already supports every major OS, or the other platform is tiny, a port is busywork.
+  Check the platform's user base before committing the team.
+</div>
+
+<h3>Publishers: money now, revenue later</h3>
+
+<p>
+  A publisher offers you a deal: they put up <b>funding</b> and/or handle <b>marketing</b> or
+  <b>printing</b>, and in exchange they take a <b>royalty</b> on sales — up to 60 % — usually with a
+  <b>recoup</b> clause (they keep the first revenue until they've recovered what they spent) and a
+  <b>deadline</b>.
+</p>
+
+<div class="vs">
+  <div>
+    <h4>Take the deal when…</h4>
+    <ul>
+      <li>You can't afford marketing for a product you believe in.</li>
+      <li>You're unknown and need distribution more than margin.</li>
+      <li>The funding lets you finish a product you'd otherwise abandon.</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Avoid it when…</h4>
+    <ul>
+      <li>You can market the product yourself — the royalty is permanent.</li>
+      <li>You're already famous in that category; you're giving away money.</li>
+      <li>The deadline is tight and the penalty is harsh.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Support: the bill for shipping bugs</h3>
+
+<p>
+  Every released product generates <b>support tickets</b> — the more users and the more bugs, the
+  faster they arrive. If nobody answers them, they go stale and you <b>lose fans in that category</b>,
+  and the loss per missed ticket is bigger the buggier the product was.
+</p>
+
+<ul>
+  <li><b>Staff a support team</b> once you have a catalogue, or your back catalogue quietly erodes
+      the reputation your next launch depends on.</li>
+  <li><b>Fewer bugs = fewer tickets.</b> Support cost is another reason to fix the build before
+      release.</li>
+  <li><b>Support work can be sold</b> — taking support deals for other companies' products is a
+      steady, unglamorous income stream.</li>
+  <li><b>Your store has its own penalty</b> if it's the product being neglected — distribution
+      platforms lose standing rather than fans.</li>
+</ul>
 
 <h3>Where you sell</h3>
 
@@ -983,13 +1339,55 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
 </div>
 
 <div class="box note">
-  <span class="t">"You can develop your own server products…"</span>
-  The game's blurbs mention designing your own server products and using them for hosting, or
-  using servers already on the market. In this version (<b>1.8.42</b>) servers are equipment you
-  buy, place and wire together, and hosting is either in-house or outsourced through a deal — the
-  rules above are exactly what applies. If your build has a developable server product, it plugs
-  into the same system: the thing you're really buying is <b>bandwidth for your users</b>.
+  <span class="t">"You can develop your own server products…" — where that line comes from</span>
+  <p style="margin:6px 0">
+    That sentence is from the <b>overhaul</b> announcement on Steam (the "Overhaul update" post,
+    5 Aug 2026), not from a patch you have installed. The overhaul is the big pre-1.0 rewrite of
+    marketing, servers and subsidiaries; as of the latest news it is still heading into testing, and
+    the developers have said it <b>breaks save compatibility</b>.
+  </p>
+  <p style="margin:6px 0">
+    In the version this guide covers (<b>1.8.42</b>) servers are equipment you buy, place and wire
+    together, and hosting is either in-house or outsourced through a deal — the rules above are
+    exactly what applies. The overhaul turns that into a product line:
+  </p>
+  <ul style="margin:6px 0 6px 20px">
+    <li><b>Server products</b> become something you design, with features that set their
+        <b>bandwidth, durability, power usage and security</b>.</li>
+    <li><b>In-world servers must be populated</b> with those products — bought from the market or
+        manufactured yourself. The server furniture becomes the chassis; the product is the machine
+        inside.</li>
+    <li><b>Security</b> lowers the impact of DDoS attacks, and <b>IT staff</b> work to mitigate
+        them.</li>
+    <li><b>DDoS becomes a random event</b> that scales with your company's size (and can be aimed at
+        other players in multiplayer) instead of a $5M action you buy.</li>
+  </ul>
+  <p style="margin:6px 0 0">
+    If your build is on an overhaul test branch, expect these rules to apply on top of everything
+    above: hosting still costs bandwidth, it just comes from a product you chose rather than a rack
+    you bought.
+  </p>
 </div>
+
+<h3>DDoS today: a $5 million grudge</h3>
+
+<p>
+  In the current build there is exactly one way a DDoS happens, and it's the one you cause:
+</p>
+
+<ul>
+  <li><b>You</b> open the accounting/actions window and pick <b>DDoS</b> — it costs
+      <b>$5,000,000</b>.</li>
+  <li>You then choose a rival product that <b>needs servers</b> and isn't hosted by a third party.</li>
+  <li>The attack runs for <b>12 months</b>. Every day it applies load incidents to that product:
+      their user base shrinks, their awareness drops, they lose fans, and their refunds rise.</li>
+  <li>It is one-way in single player: AI companies never DDoS you, and you can't target another
+      player in multiplayer.</li>
+</ul>
+
+<p class="dim">
+  The overhaul changes this into a two-way, random system with a defence stat — see the note above.
+</p>
 
 <h3>Hardware: consoles and phones</h3>
 
@@ -1022,6 +1420,131 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   brand also gets more out of hardware than an unknown one, so the reputation you build for years
   is what makes a device launch work. Do it when you have cash you can afford to lose — and when
   you want a platform, not just a product.
+</div>
+
+<h3>The economics of a device</h3>
+
+<p>
+  A hardware unit is not a software copy. Every box costs real money to make, and the number that
+  governs everything is the <b>bill of materials</b> — the sum of the components your design
+  requires.
+</p>
+
+<div class="formula-note">
+  <b>Unit economics, roughly:</b><br>
+  sale price − retail cut (~30 %) − cost of the unit = profit per box<br>
+  <span class="dim small">Cost of the unit ≈ the component bill if you make it yourself; about twice
+  that if you simply buy finished units.</span>
+</div>
+
+<p>
+  Components come from the <b>features you ticked</b>. Anything marked with a requirement only
+  appears if the matching feature is in the design, so every feature carries a hidden per-unit
+  price tag. The shipped numbers make this concrete:
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th class="num">Bill of materials</th>
+      <th class="num">Build cost</th>
+      <th class="num">Buy cost</th>
+      <th class="num">Price</th>
+      <th class="num">Retail cut</th>
+      <th class="num">Profit — build / buy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Console — lean</b><div class="tiny dim">plastic, motherboard, controller, case</div></td>
+      <td class="num">$65</td><td class="num">$65</td><td class="num">$130</td>
+      <td class="num">$400</td><td class="num">$120</td>
+      <td class="num" style="color:#2f7d55;font-weight:700">+$215 / +$150</td>
+    </tr>
+    <tr>
+      <td><b>Console — full</b><div class="tiny dim">+ antenna, drive bay, device input</div></td>
+      <td class="num">$95</td><td class="num">$95</td><td class="num">$190</td>
+      <td class="num">$400</td><td class="num">$120</td>
+      <td class="num" style="color:#2f7d55;font-weight:700">+$185 / +$90</td>
+    </tr>
+    <tr>
+      <td><b>Phone — lean</b><div class="tiny dim">screen, controller chip, motherboard, plastic, case</div></td>
+      <td class="num">$160</td><td class="num">$160</td><td class="num">$320</td>
+      <td class="num">$500</td><td class="num">$150</td>
+      <td class="num" style="color:#2f7d55;font-weight:700">+$190 / +$30</td>
+    </tr>
+    <tr>
+      <td><b>Phone — full</b><div class="tiny dim">+ touch sensor, vibration, fingerprint scanner</div></td>
+      <td class="num">$230</td><td class="num">$230</td><td class="num">$460</td>
+      <td class="num">$500</td><td class="num">$150</td>
+      <td class="num" style="color:#2f7d55;font-weight:700">+$120 / −$110</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p class="small dim">
+  Computed from the shipped component prices, at the suggested price (console $400, phone $500),
+  with retail taking 30 %. Your design's exact bill depends on the features you pick — the shape is
+  what matters: <b>phones cost far more per unit than consoles</b>, and <b>buying finished units
+  instead of building them roughly doubles your unit cost</b>.
+</p>
+
+<div class="box warn">
+  <span class="t">The hardware trap</span>
+  Ticking a feature that requires a $50 touch sensor adds about $50 of material to <i>every unit you
+  will ever build</i>. On software, a feature costs development time once. On hardware it costs
+  development time <b>and</b> a piece of every sale — so a feature has to earn its component bill,
+  not just its score.
+</div>
+
+<div class="box tip">
+  <span class="t">Make, don't buy</span>
+  You can shortcut production by ordering finished copies, but you pay roughly double the component
+  bill for the privilege — and a phone can go from profitable to loss-making on that markup alone.
+  An assembly line pays for itself quickly on anything you intend to sell in volume.
+</div>
+
+<h3>Hardware checklist</h3>
+
+<ol class="steps">
+  <li>
+    <b>Keep the bill of materials lean.</b> Decide which component-heavy features actually pay for
+    themselves. Expensive parts in the shipped data: controller chip ($100 on phones), touch sensor
+    ($50), screen ($40). Cheap: plastic, case, motherboard ($5–$10).
+  </li>
+  <li>
+    <b>Build the factory before you order.</b> An assembly line needs a printer for every component
+    plus one for each assembly step, including the final assembly. Throughput is set by the slowest
+    station, so one under-specced printer bottlenecks the whole line.
+  </li>
+  <li>
+    <b>Produce stock before launch.</b> Hardware is <b>100 % physical</b>. If you launch with no
+    stock, every sale you could have made is missed, and missed demand does not come back later.
+  </li>
+  <li>
+    <b>But don't over-order.</b> Unsold units are components you already paid for. Estimate the
+    first few months of sales, then top up as you see the real curve.
+  </li>
+  <li>
+    <b>Check the price against the bill, not just the suggestion.</b> The suggested price is an
+    anchor, not a promise. If the numbers don't work, either cut components or accept that the
+    device is a loss-leader for the platform.
+  </li>
+  <li>
+    <b>Think in years, not weeks.</b> Console users stick around for a long time (retention 48
+    months), so a console can be a platform play: every piece of software sold for your OS depends on
+    your user base. That is the real prize, not the box margin.
+  </li>
+</ol>
+
+<div class="box tip">
+  <span class="t">The hardware design itself</span>
+  The hardware editor is where you shape the device (its body, controls, screen placement). It is
+  mostly about how the product looks — if you skip it, the game warns you and generates a random
+  design. Do it anyway: it's the difference between "my console" and "a grey box".
 </div>
 
 <h3>Should you bother with either?</h3>
@@ -1115,6 +1638,44 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   release never gets the compounding effect, and always feels like it's starting over.
 </div>
 
+<h3>Awards, and the other reputation</h3>
+
+<p>
+  There are two reputations in this game, and only one of them is about your products.
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Awards (prestige)</h4>
+    <ul class="small">
+      <li>Every year the industry hands out awards by product category — <b>gold, silver and
+          bronze</b>, plus a <b>platinum</b> trophy for five wins in the same category.</li>
+      <li>You get a trophy you can place in the office. In <b>1.8.42 they're prestige only</b> — no
+          direct sales or reputation bonus.</li>
+      <li>They do have a <b>cash value</b>: if you go bankrupt, the game will sell your awards to
+          cover the debt.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Business reputation</h4>
+    <ul class="small">
+      <li>A separate <b>six-star</b> track, starting at about <b>1/6</b>.</li>
+      <li>It isn't about games — it's about whether companies trust you.</li>
+      <li>Gates <b>hiring</b> (candidates with high demands won't join an unknown company) and
+          <b>deals</b> (the chance a company offers you one).</li>
+      <li>Goes up when you complete contracts and deals, down when you fail them — and tax fraud
+          costs a large chunk of it.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tip">
+  <span class="t">How to raise business reputation</span>
+  Take <b>contracts and finish them on time</b>. It's slow, unglamorous and the single best way to
+  get access to better hires and bigger deals. Failing a deal is expensive in ways the tooltip
+  doesn't show — it lowers the ceiling on everything you can sign next.
+</div>
+
 <h3>What to do about a bad release</h3>
 
 <ol>
@@ -1199,6 +1760,41 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
   pile into ongoing income and control — and a good way to lose a large cash pile if you're
   careless.
 </p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th>What</th><th>What you get</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>Shares</b></td>
+      <td>Dividends, a rising share price, and voting power in another company.</td>
+      <td>The price can fall; your money is locked in until you sell.</td>
+    </tr>
+    <tr>
+      <td><b>Majority stake</b></td>
+      <td>Control of the company — you decide what it develops.</td>
+      <td>You inherit its debts and its problems.</td>
+    </tr>
+    <tr>
+      <td><b>Subsidiaries</b></td>
+      <td>A company that keeps developing products on its own while you own it.</td>
+      <td>They can lose money; you may have to bail them out.</td>
+    </tr>
+    <tr>
+      <td><b>Bonds &amp; savings</b></td>
+      <td>A safe place for idle cash, earning a little interest.</td>
+      <td>Low return — but it's the first thing the game liquidates if you go bankrupt.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box note">
+  <span class="t">The boring truth about the late game</span>
+  Buying shares in a well-run competitor is usually a better return than buying a badly-run one
+  cheaply. And cash sitting in bonds is not wasted — it's the buffer that saves you from a bad
+  launch, and the bankruptcy system will spend it before it spends anything else.
+</div>
 
 <div class="box rule">
   <span class="t">Order of operations</span>
@@ -1313,8 +1909,209 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
       It's the cheapest permanent buff in the game.</li>
 </ul>
 
+<h3>The underworld: heat, audits and offshore money</h3>
+
+<p>
+  The accounting/actions window also sells four services that are… not entirely legal. Each one
+  costs money and generates <b>heat</b> — a hidden 0–10,000,000 meter that only cools down while you
+  behave.
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead><tr><th>Action</th><th class="num">Cost</th><th class="num">Heat</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td><b>Black market</b></td><td class="num">$50,000</td><td class="num">0.1–0.3</td>
+      <td>A crate of random furniture you can keep or sell for offshore cash.</td></tr>
+    <tr><td><b>Pay off an employee</b></td><td class="num">$200,000</td><td class="num">0.25–0.3</td>
+      <td>They leave quietly, no fuss and no notice.</td></tr>
+    <tr><td><b>Corporate espionage</b></td><td class="num">$500,000</td><td class="num">0.4–0.6</td>
+      <td>Steal a tech level you haven't researched.</td></tr>
+    <tr><td><b>DDoS</b></td><td class="num">$5,000,000</td><td class="num">0.5–0.8</td>
+      <td>Twelve months of load incidents on a rival's online product.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li><b>Heat decays</b> at roughly 833,000 per day while you keep your nose clean — but the bigger
+      actions can put you most of the way to the cap in one go.</li>
+  <li><b>Audits and police</b> follow high heat: they can confiscate your offshore account, fine you
+      (up to $10M or the balance, whichever is larger) and hit your business reputation.</li>
+  <li><b>Offshore money</b> isn't in the company — it's the stash the black market and "money
+      funneling" feed. It's also exactly what an audit looks for.</li>
+  <li><b>Illegal accounting marks your tax report</b>, which is what makes an audit possible in the
+      first place.</li>
+</ul>
+
+<div class="box bad">
+  <span class="t">Is it worth it?</span>
+  Espionage is the only one with a clear strategic use — a tech level you'd otherwise wait years
+  for. The rest are convenience purchases with a tail risk that can wipe out the cash you gained.
+  If you do dabble, keep an eye on heat and stop well before the cap.
+</div>
+
+<!-- ================= PLAYBOOK ================= -->
+<h2 id="win"><span class="n">11</span>How to win: two playbooks</h2>
+
+<p class="lead">
+  Everything so far is mechanics. This is the strategy layer: what to build, in what order, with the
+  money you actually have. Software and hardware are different games with different rhythms — treat
+  them as two playbooks, not one.
+</p>
+
+<h3>The one principle behind every good studio</h3>
+
+<div class="pull">
+  Compounding beats brilliance. One good product in a category you keep returning to is worth more
+  than five scattered hits, because reputation, fans, technology and reusable features all carry
+  forward.
+</div>
+
+<p>
+  Almost every mechanic in the game rewards this: fans accumulate per category, sequels inherit
+  reputation, features get cheaper to reuse, updates extend the tail, and your existing audience
+  makes the next launch bigger. The studio that jumps categories every release is permanently
+  starting from zero.
+</p>
+
+<h3>The software playbook, by stage of company</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Stage</th><th>What you have</th><th>What to do</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><b>1. Survival</b><br><span class="tiny dim">years 1–2</span></td>
+      <td>Little cash, no reputation, a tiny team</td>
+      <td>One small, finished product. Take contracts to cover salaries. Keep the office minimal.</td>
+      <td>You're buying time and learning the loop. Reputation is the real product here.</td>
+    </tr>
+    <tr>
+      <td><b>2. Identity</b><br><span class="tiny dim">years 2–5</span></td>
+      <td>A few releases, some cash, a category you understand</td>
+      <td>Pick one category and stay. Ship two or three products in it. Hire one or two strong people.</td>
+      <td>This is where fans and reputation start compounding.</td>
+    </tr>
+    <tr>
+      <td><b>3. Machine</b><br><span class="tiny dim">years 5–12</span></td>
+      <td>Reliable income, a known name, a back catalogue</td>
+      <td>Two teams. Alternate base releases and expansions. Patch old products. Build a marketing habit.</td>
+      <td>You're smoothing income and squeezing the tail you already own.</td>
+    </tr>
+    <tr>
+      <td><b>4. Empire</b><br><span class="tiny dim">years 12+</span></td>
+      <td>Serious cash, a strong brand, options</td>
+      <td>A distribution platform, a console, publishing other studios, or buying your rivals.</td>
+      <td>You stop selling products and start owning the market they sit in.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>What should I build next?</h3>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>If…</th><th>Then build…</th><th>Because</th></tr></thead>
+  <tbody>
+    <tr><td>You have less than three months of salaries</td><td>A contract, then a small product</td><td>Cash flow is the only thing that can kill you outright.</td></tr>
+    <tr><td>You have a hit product</td><td>An add-on, then a sequel</td><td>The audience already exists; the marginal cost is low and the sales tail is already yours.</td></tr>
+    <tr><td>You have an old product still selling</td><td>An update</td><td>Updates reset part of the decline and cost a fraction of a new product.</td></tr>
+    <tr><td>You are unknown</td><td>Something small and finished in your chosen category</td><td>Reputation gates sales when you're new; a big swing will undersell.</td></tr>
+    <tr><td>You have cash and a strong brand</td><td>A new IP, a platform, or hardware</td><td>You can finally afford to swing — and to lose.</td></tr>
+    <tr><td>Your category is crowded and your quality is average</td><td>Something in a neighbouring category you can be best in</td><td>Quality is judged as a share of the category; being a big fish in a small pond beats being ignored.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>The product loop, as a habit</h3>
+
+<ol class="steps">
+  <li><b>Design three or four passes.</b> Choose ★★ features, balance the three areas, put a lead on it.</li>
+  <li><b>Alpha with the right team.</b> Match roles to the feature list; don't bloat the team.</li>
+  <li><b>Review, then iterate if it's worth it.</b> On a small project an iteration is usually worth the progress it costs.</li>
+  <li><b>Beta with your best programmer.</b> Ship when the fix curve flattens, not at zero bugs.</li>
+  <li><b>Market in the last three months.</b> Press builds throughout, a press release near the end.</li>
+  <li><b>Release into autumn if you can.</b> Price at the suggestion.</li>
+  <li><b>Patch at about half the category's retention.</b> That's when the sales tail is dying.</li>
+  <li><b>Expansion at around a year, sequel at around two.</b> That cadence keeps the audience warm and the cash coming.</li>
+</ol>
+
+<div class="box rule">
+  <span class="t">The pre-release checklist</span>
+  Design passes done · every feature finished · best programmer on beta · price at the suggestion ·
+  marketing booked for the last three months · stock printed (physical) · servers assigned (online
+  features) · release month chosen. If any of those is missing, the launch will underperform — and
+  you'll usually know which one it was.
+</div>
+
+<h3>The hardware playbook</h3>
+
+<p>
+  Hardware is a different game: slower, more expensive, and far more strategic. Don't start one
+  because you're bored of software — start one because you want the platform.
+</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Before you start</h4>
+    <ul class="small">
+      <li><b>Cash you can lose.</b> A device costs components up front, and unsold units are dead money.</li>
+      <li><b>A reputation worth putting on a box.</b> The quality of a known brand's device is judged higher.</li>
+      <li><b>A reason.</b> A console or phone is worth more as a platform for your software than as a product.</li>
+      <li><b>Factory space.</b> Assembly lines need room, power and cooling.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>While you build it</h4>
+    <ul class="small">
+      <li><b>Design lean.</b> Every component-heavy feature is a per-unit cost forever.</li>
+      <li><b>Build the line first.</b> A printer for every component plus the final assembly; the slowest station sets the rate.</li>
+      <li><b>Stock before launch.</b> Launching with no boxes is throwing away demand.</li>
+      <li><b>Price against the bill of materials,</b> not against the suggested price alone.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box tip">
+  <span class="t">The platform dividend</span>
+  A successful console or phone gives you a user base that stays for years, and <b>every piece of
+  software sold for that operating system depends on it</b>. That's the real hardware business: the
+  box is the entry ticket, the software sales are the prize.
+</div>
+
+<h3>The subscription playbook</h3>
+
+<ul>
+  <li><b>Only in long-retention categories.</b> Operating systems, above all: 36–72 months of
+      retention is what makes an 8 % monthly price beat a one-off sale. Tools at 24 months are
+      marginal; games, antivirus and office software churn too fast to make it work.</li>
+  <li><b>Start a new IP as a subscription</b> rather than converting an established one-off series;
+      conversion loses part of the sequel bonus and gets called out in reviews.</li>
+  <li><b>Price at the suggestion</b> and keep the product updated — churn is the enemy, and updates
+      are the only weapon against it.</li>
+  <li><b>Keep it digital.</b> Boxed subscriptions are punished by the retail cut.</li>
+  <li><b>Think in years.</b> A subscription product earns little at launch and a lot later; if you
+      need cash now, it's the wrong model.</li>
+</ul>
+
+<h3>When a year goes badly</h3>
+
+<ol>
+  <li><b>Cut costs first.</b> Reduce the team to what the next product actually needs; a smaller team
+      finishing something beats a big team stalling.</li>
+  <li><b>Finish something small and good.</b> Reputation is repaired by finished, fairly-priced
+      products, not by ambition.</li>
+  <li><b>Update the back catalogue.</b> Old products still have an audience, and updates are the
+      cheapest revenue in the game.</li>
+  <li><b>Take a contract.</b> It doesn't build reputation, but it buys the months you need to rebuild.</li>
+  <li><b>Don't swing for the fences.</b> The comeback product should be the safest thing you can make
+      well, not the most ambitious thing you can imagine.</li>
+</ol>
+
 <!-- ================= MISTAKES ================= -->
-<h2 id="mistakes"><span class="n">11</span>Ten mistakes that end studios</h2>
+<h2 id="mistakes"><span class="n">12</span>Ten mistakes that end studios</h2>
 
 <div class="tablewrap">
 <table>
@@ -1375,7 +2172,7 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
 </div>
 
 <!-- ================= CHEAT SHEET ================= -->
-<h2 id="cheatsheet"><span class="n">12</span>Cheat sheet</h2>
+<h2 id="cheatsheet"><span class="n">13</span>Cheat sheet</h2>
 
 <h3>The four phases at a glance</h3>
 
@@ -1426,6 +2223,49 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
 </table>
 </div>
 
+<h3>What difficulty actually changes</h3>
+
+<p class="dim small">
+  Difficulty doesn't make the AI smarter — it changes the numbers you're working with. These are the
+  shipped values.
+</p>
+
+<div class="tablewrap">
+<table class="compact">
+  <thead>
+    <tr><th></th><th class="num">Beginner</th><th class="num">Easy</th><th class="num">Medium</th>
+    <th class="num">Hard</th><th class="num">Very hard</th><th class="num">Impossible</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Starting money</th><td class="num">$50k</td><td class="num">$50k</td><td class="num">$25k</td>
+      <td class="num">$10k</td><td class="num">$0</td><td class="num">$100k</td></tr>
+    <tr><th>Tax rate</th><td class="num">0 %</td><td class="num">10 %</td><td class="num">15 %</td>
+      <td class="num">20 %</td><td class="num">25 %</td><td class="num">25 %</td></tr>
+    <tr><th>Design speed</th><td class="num">×3</td><td class="num">×3</td><td class="num">×2</td>
+      <td class="num">×2</td><td class="num">×1</td><td class="num">×1</td></tr>
+    <tr><th>Alpha speed</th><td class="num">×1.2</td><td class="num">×1.2</td><td class="num">×1.05</td>
+      <td class="num">×1.05</td><td class="num">×1.0</td><td class="num">×1.0</td></tr>
+    <tr><th>Creativity weight</th><td class="num">none</td><td class="num">none</td><td class="num">medium</td>
+      <td class="num">harsh</td><td class="num">harsh</td><td class="num">harsh</td></tr>
+    <tr><th>Reputation's grip on sales</th><td class="num">0.60</td><td class="num">0.60</td><td class="num">0.65</td>
+      <td class="num">0.70</td><td class="num">0.80</td><td class="num">0.80</td></tr>
+    <tr><th>Hype shelf life</th><td class="num">32 mo</td><td class="num">32 mo</td><td class="num">24 mo</td>
+      <td class="num">24 mo</td><td class="num">16 mo</td><td class="num">16 mo</td></tr>
+    <tr><th>Special rules</th>
+      <td class="num">rent &amp; licences half price</td><td class="num">—</td><td class="num">—</td>
+      <td class="num">—</td><td class="num">—</td>
+      <td class="num">no contracts, deals, loans or publishers</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p class="small dim">
+  The pattern: harder settings give you less money, tax more of it, slow down development, and make
+  sales depend more on a reputation you don't have yet. Impossible is the odd one out — it hands you
+  $100k but removes contracts, deals, loans and publishers, so you live or die by product sales
+  alone.
+</p>
+
 <h3>Small glossary</h3>
 
 <div class="tablewrap">
@@ -1453,6 +2293,11 @@ footer{margin-top:70px;border-top:1px solid var(--line);padding-top:18px;color:v
     <tr><td><b>Hardware</b></td><td>Physical devices (consoles, phones). You design the device, manufacture units and sell boxes.</td></tr>
     <tr><td><b>Manufacturing</b></td><td>Turning components into sellable hardware units. Unsold units are money already spent.</td></tr>
     <tr><td><b>Peripheral</b></td><td>A forced add-on sold with a hardware product (e.g. a joystick). Its quality affects the device's quality.</td></tr>
+    <tr><td><b>Bill of materials</b></td><td>The sum of the components your device design needs. It is the per-unit cost you pay before retail's cut.</td></tr>
+    <tr><td><b>Assembly line</b></td><td>The set of printers that turns components into finished units. The slowest station sets the rate.</td></tr>
+    <tr><td><b>Subscription</b></td><td>A monthly fee instead of a one-off price. Only worth it in categories where customers stay for a long time.</td></tr>
+    <tr><td><b>Retention</b></td><td>How fast a product's audience leaves. Long retention = a long sales tail and a viable subscription.</td></tr>
+    <tr><td><b>Platform</b></td><td>Owning the operating system or store other software has to go through — the real prize of hardware.</td></tr>
     <tr><td><b>Port</b></td><td>Bringing a product to another operating system to reach more buyers.</td></tr>
   </tbody>
 </table>

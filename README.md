@@ -18,22 +18,23 @@ Nothing in it was created, modified or deleted.
 
 ## Player's Handbook (the non-technical one)
 
-Twelve chapters, written to be read in one sitting:
+Thirteen chapters, written to be read in one sitting:
 
 | Chapter | Contents |
 |---|---|
 | 01 | Your first two hours — a safe, boring, profitable first project |
 | 02 | The loop: design → alpha → beta → release, and where every screen lives |
-| 03 | People: roles, skills, teams, morale, your first office |
-| 04 | Money: income, salaries, contracts, the early-game survival plan |
-| 05 | Selling: marketing timing, pricing, release windows, updates/add-ons/sequels |
-| 06 | Servers and hardware: hosting, bandwidth, SCM, consoles and phones |
-| 07 | Reviews and reputation — what actually matters |
+| 03 | People: roles, skills, teams, morale, your first office, **training, HR, lead-designer demands** |
+| 04 | Money: income, salaries, contracts, **loans, taxes, insurance & safety**, the survival plan |
+| 05 | Selling: marketing timing, pricing, subscriptions, release windows, updates/add-ons/sequels, **ports, publishers, support** |
+| 06 | Servers and hardware: hosting, bandwidth, SCM, **device economics**, manufacturing checklist |
+| 07 | Reviews and reputation — **awards, business reputation**, recovering from a bad release |
 | 08 | Technology: staying current without over-spending |
 | 09 | Growing: second team, series, platforms, hardware, publishing, stocks |
 | 10 | Secrets: quirks, hidden effects and the three-star features that matter |
-| 11 | Ten mistakes that end studios |
-| 12 | Cheat sheet: phase table, first-year plan, glossary |
+| 11 | **How to win: software, hardware and subscription playbooks** |
+| 12 | Ten mistakes that end studios |
+| 13 | Cheat sheet: phase table, first-year plan, glossary |
 
 ## The Score Book (the technical one)
 
